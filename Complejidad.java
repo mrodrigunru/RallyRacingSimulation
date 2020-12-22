@@ -1,11 +1,35 @@
 
 /**
- * Enumeration class Complejidad - write a description of the enum class here
+ * Enumeration class Complejidad - Mide la complejidad del cicuito
  * 
- * @author (your name here)
- * @version (version number or date here)
+ * @author Manuel Rodriguez && Marcos Santos
+ * @version 1.0
  */
 public enum Complejidad
 {
-    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+    BAJA ("BAJA",1.0),
+    MEDIA ("MEDIA",1.25),
+    ALTA ("ALTA",1.5);
+    
+    private final String nombre;
+    private final double value;
+    
+    Complejidad(String nombre, double value){
+        this.nombre=nombre;
+        this.value=value;
+    }
+    
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public double getValor(){
+        return value;  
+    }
+    
+    
+    @Override
+    public String toString(){
+        return getNombre() + "(Valor Original: "+ getValor() +")";
+    }
 }
