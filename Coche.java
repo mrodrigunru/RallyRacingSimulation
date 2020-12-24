@@ -9,10 +9,34 @@
 public interface Coche
 {
     /**
-     * An example of a method header - replace this comment with your own
+     * Calcula la velocidad real de los coches en el cirucito
      * 
-     * @param  y    a sample parameter for a method
-     * @return        the result produced by sampleMethod 
+     * @param   Velocidad velocidad: velocidad teorica del vehiculo,
+     *          double destreza: destreza del piloto
+     *          Complejidad complejidad: complejidad del circuito
+     * @return        double velocidadReal: la velocidad real del coche
      */
-    int sampleMethod(int y);
+    public double velocidadReal(Velocidad velocidad, double destreza, Complejidad complejidad);
+    
+    
+    public double tiempoEnTerminar(Distancia distancia, double velocidadReal);
+    
+    
+    public double combustibleRestante(Combustible combustible, int tiempoEnTerminar);
+    
+    public String getNombre();
+    
+    public void setNombre(String nombre);
+    
+    public Velocidad getVelocidad();
+    
+    public double getValorVelocidad();
+    
+    public void setVelocidad(Velocidad velocidad);
+    
+    public Combustible getCombustible();
+    
+    public double getValorCombustible();
+    
+    public void setCombustible(Combustible combustible);
 }

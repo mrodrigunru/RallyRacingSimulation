@@ -5,29 +5,24 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Frio extends CircuitoWrapper
+public class Frio extends CircuitoDecorator
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
-     * Constructor for objects of class Frio
+     * Constructor for objects of class Nocturno
      */
-    public Frio()
+    public Frio(String nombre, Complejidad comp, Distancia dis, Circuito circuito)
     {
-        // initialise instance variables
-        x = 0;
+        super(nombre, comp, dis, circuito);
+    
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    @Override
+    public double getValorComplejidad(){
+        return 1.1*super.getValorComplejidad();
+    }
+    
+    @Override
+    public double getValorDistancia(){
+        return 0.9*super.getValorDistancia();
     }
 }

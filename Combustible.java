@@ -1,20 +1,21 @@
 
 /**
- * Enumeration class Complejidad - Mide la complejidad del cicuito
+ * Enumeration class Combustible - mide el combustible de un coche
  * 
  * @author Manuel Rodriguez && Marcos Santos
  * @version 1.0
  */
-public enum Complejidad
+public enum Combustible
 {
-    BAJA ("BAJA",1.0),
-    MEDIA ("MEDIA",1.25),
-    ALTA ("ALTA",1.5);
+    ESCASO ("ESCASO",350.0),
+    NORMAL ("NORMAL",440.0),
+    GENEROSO ("GENEROSO",460.0),
+    ELEFANTE ("ELEFANTE",480.0);
     
     private final String nombre;
     private final double value;
     
-    Complejidad(String nombre, double value){
+    Combustible(String nombre, double value){
         this.nombre=nombre;
         this.value=value;
     }
@@ -26,6 +27,7 @@ public enum Complejidad
     public double getValor(){
         return value;  
     }
+    
     
     @Override
     public String toString(){

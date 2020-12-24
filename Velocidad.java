@@ -1,20 +1,21 @@
-
 /**
- * Enumeration class Complejidad - Mide la complejidad del cicuito
+ * Enumeration class Velocidad - mide el combustible de un coche
  * 
  * @author Manuel Rodriguez && Marcos Santos
  * @version 1.0
  */
-public enum Complejidad
+public enum Velocidad
 {
-    BAJA ("BAJA",1.0),
-    MEDIA ("MEDIA",1.25),
-    ALTA ("ALTA",1.5);
+    TORTUGA ("TORTUGA",200.0),
+    LENTA ("LENTA",210.0),
+    NORMAL ("NORMAL",220.0),
+    RAPIDA ("RAPIDA",230.0),
+    GUEPARDO ("GUEPARDO",240.0);
     
     private final String nombre;
     private final double value;
     
-    Complejidad(String nombre, double value){
+    Velocidad(String nombre, double value){
         this.nombre=nombre;
         this.value=value;
     }
@@ -26,6 +27,7 @@ public enum Complejidad
     public double getValor(){
         return value;  
     }
+    
     
     @Override
     public String toString(){

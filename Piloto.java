@@ -6,7 +6,10 @@
  */
 public abstract class Piloto
 {
-    // instance variables - replace the example below with your own
+    private Concentracion concentracion;
+    private double destreza;
+    
+    
     int x;
 
     /**

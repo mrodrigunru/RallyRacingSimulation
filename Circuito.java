@@ -1,33 +1,32 @@
 
 /**
- * Write a description of class Circuito here.
+ * Write a description of interface Circuito here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Manuel Rodriguez && Marcos Santos
+ * @version 1.0
  */
-public class Circuito
+
+public interface Circuito
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
-     * Constructor for objects of class Circuito
-     */
-    public Circuito()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
+     * Devuelve el nombre del circuito
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @param  (none)
+     * @return  el nombre del circuito
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    public String getNombre();
+    
+    public Complejidad getComplejidad();
+    
+    public double getValorComplejidad();
+    
+    public Distancia getDistancia();
+    
+    public double getValorDistancia();
+    
+    public void setNombre(String nombreNew);
+    
+    public void setComplejidad(Complejidad compNew);
+    
+    public void setDistancia(Distancia disNew);
 }

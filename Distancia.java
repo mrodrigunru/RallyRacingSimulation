@@ -1,5 +1,5 @@
 /**
- * Enumeration class Complejidad - Mide la distancia del cicuito
+ * Enumeration class Distancia - Mide la distancia del cicuito
  * 
  * @author Manuel Rodriguez && Marcos Santos
  * @version 1.0

@@ -1,20 +1,20 @@
-
 /**
- * Enumeration class Complejidad - Mide la complejidad del cicuito
+ * Enumeration class Concentracion - mide la concentracion de un  piloto
  * 
  * @author Manuel Rodriguez && Marcos Santos
  * @version 1.0
  */
-public enum Complejidad
+public enum Concentracion
 {
-    BAJA ("BAJA",1.0),
-    MEDIA ("MEDIA",1.25),
-    ALTA ("ALTA",1.5);
+    DESPISTADO ("DESPISTADO",90.0),
+    NORMAL ("NORMAL",100.0),
+    CONCENTRADO ("CONCENTRADO",110.0),
+    ZEN ("ZEN",120.0);
     
     private final String nombre;
     private final double value;
     
-    Complejidad(String nombre, double value){
+    Concentracion(String nombre, double value){
         this.nombre=nombre;
         this.value=value;
     }
@@ -26,6 +26,7 @@ public enum Complejidad
     public double getValor(){
         return value;  
     }
+    
     
     @Override
     public String toString(){
