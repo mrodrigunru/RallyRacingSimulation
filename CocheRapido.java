@@ -7,27 +7,31 @@
  */
 public class CocheRapido extends CocheAbstract
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    int nitro;
 
     /**
      * Constructor for objects of class CocheRapido
      */
-    public CocheRapido()
+    public CocheRapido(String nombre, Velocidad velocidad, Combustible combustible)
     {
-        // initialise instance variables
-        x = 0;
+        super(nombre,velocidad,combustible);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    @Override
+    public double velocidadReal(Velocidad velocidad, double destreza, Complejidad complejidad){
+        double vr = 0.0;
+        double vt = velocidad.getValor();
+        double cc = complejidad.getValor();
+        
+        if (nitro == 0){           
+        vr = vt * destreza;
+        vr = vr / cc;
+        }
+        else {
+            //implementar opcion de si tiene nitro
+            
+        }
+        
+        return vr;
     }
 }

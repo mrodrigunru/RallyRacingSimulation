@@ -22,8 +22,4 @@ public class Nocturno extends CircuitoDecorator
         return 1.2*super.getValorComplejidad();
     }
     
-    @Override
-    public double getValorDistancia(){
-        return 0.8*super.getValorDistancia();
-    }
 }

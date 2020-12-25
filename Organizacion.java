@@ -7,15 +7,15 @@
  */
 public class Organizacion
 {
-    // instance variables - replace the example below with your own
+    
     private static Organizacion instance;
 
     /**
-     * Constructor for objects of class Organization
+     * Constructor for objects of class Organization. Es privado debido al Singleton
      */
     private Organizacion()
     {
-        // initialise instance variables
+        // implementar constructor organizacion
         
     }
 

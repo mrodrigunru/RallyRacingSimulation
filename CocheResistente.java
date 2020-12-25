@@ -7,16 +7,13 @@
  */
 public class CocheResistente extends CocheAbstract
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    
     /**
      * Constructor for objects of class CocheResistente
      */
-    public CocheResistente()
+    public CocheResistente(String nombre, Velocidad velocidad, Combustible combustible)
     {
-        // initialise instance variables
-        x = 0;
+        super(nombre,velocidad,combustible);
     }
 
     /**
@@ -25,9 +22,16 @@ public class CocheResistente extends CocheAbstract
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    @Override
+    public double getValorCombustible(){
+        return super.getValorCombustible() + 100;
+    }
+    
+    @Override
+    public double combustibleRestante(Combustible combustible, int tiempoEnTerminar){
+       double cr = 0.0;
+       //falta implementar
+       return cr;
     }
 }
