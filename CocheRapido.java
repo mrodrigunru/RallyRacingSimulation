@@ -7,7 +7,7 @@
  */
 public class CocheRapido extends CocheAbstract
 {
-    int nitro;
+    int nitro = 80;
 
     /**
      * Constructor for objects of class CocheRapido
@@ -17,19 +17,28 @@ public class CocheRapido extends CocheAbstract
         super(nombre,velocidad,combustible);
     }
 
+    /**
+     * Calcula la velocidad de un coche con nitro
+     * 
+     * @param   Velocidad velocidad: velocidad teorica del vehiculo,
+     *          double destreza: destreza del piloto
+     *          Complejidad complejidad: complejidad del circuito
+     */
     @Override
     public double velocidadReal(Velocidad velocidad, double destreza, Complejidad complejidad){
         double vr = 0.0;
+        double vmax = 0.0;
         double vt = velocidad.getValor();
         double cc = complejidad.getValor();
         
-        if (nitro == 0){           
         vr = vt * destreza;
         vr = vr / cc;
-        }
-        else {
-            //implementar opcion de si tiene nitro
-            
+        vmax = vr + vr * 0.2;
+        if (nitro != 0){
+            while(vr <= vmax && nitro > 0){
+                vr ++;
+                nitro --;
+            }
         }
         
         return vr;

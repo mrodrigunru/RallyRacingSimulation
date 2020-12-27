@@ -1,24 +1,25 @@
 
 /**
- * Write a description of class PilotoNovato here.
+ * Write a description of class PilotoExp here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PilotoNovato extends Piloto
+public class PilotoExperimentado extends Piloto
 {
-   
+    
     /**
-     * Constructor for objects of class PilotoNovato
+     * Constructor for objects of class PilotoExp
      */
-    public PilotoNovato(String nombre, Concentracion concentracion)
+    public PilotoExperimentado(String nombre, Concentracion concentracion)
     {
         super(nombre, concentracion);
     }
+    
 
     @Override
     /**
-     * Metodo que calcula la destreza del piloto novato
+     * Metodo que calcula la destreza del piloto Experimentado
      * 
      * @param  concentracion: concentracion del piloto
      * @return     (none)
@@ -27,9 +28,9 @@ public class PilotoNovato extends Piloto
     {
         double dest = 0.0;
         double conc = concentracion.getValor();
-        dest = conc * 0.97;
-        dest = dest / 120;
-        dest = dest - 0.03;
+        dest = conc + 3;
+        dest = dest / 130;
+        dest = dest * 1.03;
         
         super.setDestreza(dest);
         

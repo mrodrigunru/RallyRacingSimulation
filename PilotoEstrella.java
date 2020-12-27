@@ -7,27 +7,33 @@
  */
 public class PilotoEstrella extends Piloto
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    
     /**
      * Constructor for objects of class PilotoEstrella
      */
-    public PilotoEstrella()
+    public PilotoEstrella(String nombre, Concentracion concentracion)
     {
-        // initialise instance variables
-        x = 0;
+        super(nombre, concentracion);
     }
+    
 
+    @Override
     /**
-     * An example of a method - replace this comment with your own
+     * Metodo que calcula la destreza del piloto Estrella
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @param  concentracion: concentracion del piloto
+     * @return     (none)
      */
-    public int sampleMethod(int y)
+     public void calcularDestreza(Concentracion concentracion)
     {
-        // put your code here
-        return x + y;
+        double dest = 0.0;
+        double conc = concentracion.getValor();
+        dest = conc + 6;
+        dest = dest / 140;
+        dest = dest * 1.06;
+        dest = dest + 0.05;
+        
+        super.setDestreza(dest);
+        
     }
 }
