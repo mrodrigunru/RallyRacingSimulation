@@ -1,4 +1,4 @@
-
+import java.util.HashMap;
 /**
  * Write a description of class Organizacion here.
  * 
@@ -7,6 +7,7 @@
  */
 public class Organizacion
 {
+    private HashMap<String, Escuderia> escuderias;
     
     private static Organizacion instance;
 

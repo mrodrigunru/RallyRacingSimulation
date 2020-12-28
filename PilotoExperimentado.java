@@ -24,10 +24,10 @@ public class PilotoExperimentado extends Piloto
      * @param  concentracion: concentracion del piloto
      * @return     (none)
      */
-     public void calcularDestreza(Concentracion concentracion)
+     public void calcularDestreza()
     {
         double dest = 0.0;
-        double conc = concentracion.getValor();
+        double conc = super.getConcentracion().getValor();
         dest = conc + 3;
         dest = dest / 130;
         dest = dest * 1.03;

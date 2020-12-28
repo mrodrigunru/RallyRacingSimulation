@@ -1,22 +1,25 @@
-
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.LinkedHashSet;
 /**
- * Write a description of class Escuderia here.
+ * Represenata a cada escudería en la competicion
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Manuel Rodriguez && Marcos Santos
+ * @version 1.0
  */
 public class Escuderia
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    private String nombreEsc;
+    private ArrayList <Piloto> pilotos;
+    //TODO comparador de pilotos
+    private LinkedHashSet<Coche> coches;
+    //TODO comparador de coches
     /**
      * Constructor for objects of class Escuderia
      */
     public Escuderia()
     {
-        // initialise instance variables
-        x = 0;
+       
     }
 
     /**
@@ -28,6 +31,6 @@ public class Escuderia
     public int sampleMethod(int y)
     {
         // put your code here
-        return x + y;
+        return y;
     }
 }
