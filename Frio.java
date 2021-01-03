@@ -13,16 +13,9 @@ public class Frio extends CircuitoDecorator
     public Frio(String nombre, Complejidad comp, Distancia dis, Circuito circuito)
     {
         super(nombre, comp, dis, circuito);
+        setComplejidadActual(1.1 * getComplejidadActual());
+        setDistanciaActual(0.9 * getDistanciaActual());
     
     }
 
-    @Override
-    public double getValorComplejidad(){
-        return 1.1*super.getValorComplejidad();
-    }
-    
-    @Override
-    public double getValorDistancia(){
-        return 0.9*super.getValorDistancia();
-    }
 }

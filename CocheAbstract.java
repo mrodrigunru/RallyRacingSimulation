@@ -7,6 +7,7 @@ public abstract class CocheAbstract implements Coche
 {
     private Velocidad velocidad;
     private Combustible combustible;
+    private double combustibleActual;
     private String nombre;
     
 
@@ -21,6 +22,8 @@ public abstract class CocheAbstract implements Coche
         this.nombre = nombre;
         this.velocidad = velocidad;
         this.combustible = combustible;
+        this.combustibleActual = combustible.getValor();
+        
     }
     
     public double velocidadReal(Velocidad velocidad, double destreza, Complejidad complejidad){
@@ -80,7 +83,16 @@ public abstract class CocheAbstract implements Coche
         return combustible.getValor();
     }
     
+    public double getCombustibleActual(){
+        return combustibleActual;
+    }
+    
     public void setCombustible(Combustible combustible){
         this.combustible = combustible;
+        this.combustibleActual = combustible.getValor();
+    }
+    
+    public void setCombustibleActual(double combustible){
+        this.combustibleActual = combustible;
     }
 }

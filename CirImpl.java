@@ -1,11 +1,13 @@
+
 /**
- * Abstract class CircuitoWrapper - write a description of the class here
+ * Write a description of class CirImpl here.
  * 
- * @author: 
- * Date: 
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public abstract class CircuitoDecorator implements Circuito
+public class CirImpl implements Circuito
 {
+    
     private Complejidad complejidad;
     private double complejidadActual;
     private Distancia distancia;
@@ -14,70 +16,79 @@ public abstract class CircuitoDecorator implements Circuito
     private Circuito decoratedCircuito;
     
     /**
-     * Contructor del decorador de Circuito
-     * 
-     * @param        String nombre: nombre del circuito,
-     *               Complejidad complejidad: la complejidad del circuito,
-     *               Distancia distancia: la distancia del circuito
-     * @return       (none)
+     * Constructor for objects of class CirImpl
      */
-    protected CircuitoDecorator(String nombre, Complejidad complejidad, Distancia distancia, Circuito circuito)
+    public CirImpl(String nombre, Complejidad complejidad, Distancia distancia)
     {
         this.nombre = nombre;
         this.complejidad = complejidad;
         this.complejidadActual = complejidad.getValor();
         this.distancia = distancia;  
         this.distanciaActual = distancia.getValor();
-        decoratedCircuito = circuito;
     }
     
+    @Override
     public String getNombre(){
-        return decoratedCircuito.getNombre();
+        return nombre;
     }
     
+    @Override
     public Complejidad getComplejidadOriginal(){
         return complejidad;
     }
     
+    @Override
     public double getValorComplejidadOriginal(){
         return complejidad.getValor();
     }
     
+    @Override
     public double getComplejidadActual(){
-        return decoratedCircuito.getComplejidadActual();
+        return complejidadActual;
     }
     
+    @Override
     public Distancia getDistanciaOriginal(){
         return distancia;
     }
     
+    @Override
     public double getValorDistanciaOriginal(){
         return distancia.getValor();
     }
     
+    @Override
     public double getDistanciaActual(){
-        return decoratedCircuito.getDistanciaActual();
+        return distanciaActual;
     }
     
+    @Override
     public void setNombre(String nombreNew){
         nombre = nombreNew;
     }
     
+    @Override
     public void setComplejidadOriginal(Complejidad compNew){
         complejidad = compNew;
     }
     
+    @Override
     public void setComplejidadActual(double compAc){
-        decoratedCircuito.setComplejidadActual(compAc);
+        complejidadActual = compAc;
     }
     
+    @Override
     public void setDistanciaOriginal(Distancia disNew){
         distancia = disNew;
     }
     
+    @Override
     public void setDistanciaActual(double disAc){
-        decoratedCircuito.setDistanciaActual(disAc);
+        distanciaActual = disAc;
     }
     
     
+
 }
+
+

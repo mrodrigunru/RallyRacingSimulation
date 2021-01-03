@@ -1,4 +1,5 @@
 
+
 /**
  * Write a description of interface Circuito here.
  * 
@@ -16,17 +17,67 @@ public interface Circuito
      */
     public String getNombre();
     
-    public Complejidad getComplejidad();
+    /**
+     * Devuelve la complejidad del circuito
+     * 
+     * @param  (none)
+     * @return  la complejidad del circuito
+     */
+    public Complejidad getComplejidadOriginal();
     
-    public double getValorComplejidad();
+    public double getComplejidadActual();
     
-    public Distancia getDistancia();
+    /**
+     * Devuelve el valor de la complejidad del circuito
+     * 
+     * @param  (none)
+     * @return  el valor de la complejidad del circuito
+     */
+    public double getValorComplejidadOriginal();
     
-    public double getValorDistancia();
+    /**
+     * Devuelve la distancia del circuito
+     * 
+     * @param  (none)
+     * @return  la distancia del circuito
+     */
+    public Distancia getDistanciaOriginal();
     
+    public double getDistanciaActual();
+    
+    /**
+     * Devuelve el valor de la distancia del circuito
+     * 
+     * @param  (none)
+     * @return  el valor de la distancia del circuito
+     */
+    public double getValorDistanciaOriginal();
+    
+    /**
+     * Asigna el nombre del circuito
+     * 
+     * @param  el nombre del circuito
+     * @return  (none)
+     */
     public void setNombre(String nombreNew);
     
-    public void setComplejidad(Complejidad compNew);
+    /**
+     * Asigna la complejidad del circuito
+     * 
+     * @param  la complejidad del circuito
+     * @return  (none)
+     */
+    public void setComplejidadOriginal(Complejidad compNew);
     
-    public void setDistancia(Distancia disNew);
+    public void setComplejidadActual(double compAc);
+    
+    /**
+     * Asigna la distancia del circuito
+     * 
+     * @param  la distancia del circuito
+     * @return  (none)
+     */
+    public void setDistanciaOriginal(Distancia disNew);
+    
+    public void setDistanciaActual(double disAc);
 }
