@@ -87,6 +87,18 @@ public class CirImpl implements Circuito
         distanciaActual = disAc;
     }
     
+    public String getCondiciones(){
+        return "";
+    }
+    
+    @Override
+    public String toString(){
+        return "<circuito: " + getNombre() +"> <cond: " + getCondiciones() +
+        "> <comp:" + getComplejidadOriginal() + "(original:" + getValorComplejidadOriginal() + ")(actual: " +
+        getComplejidadActual() + ")> <dist: distancia(original:" + getValorDistanciaOriginal() + ")(actual: " +
+        getDistanciaActual() + ")>";
+    }
+    
     
 
 }

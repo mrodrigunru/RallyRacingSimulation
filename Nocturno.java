@@ -17,6 +17,11 @@ public class Nocturno extends CircuitoDecorator
         setComplejidadActual(1.2 * getComplejidadActual());
         setDistanciaActual(0.8 * getDistanciaActual());
     }
+    
+    @Override
+    public String getCondiciones(){
+        return getDecoratedCircuito().getCondiciones() + getClass().getName();
+    }
 
     
 }

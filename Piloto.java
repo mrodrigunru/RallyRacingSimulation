@@ -10,7 +10,6 @@ public abstract class Piloto
 {
     private String nombre;
     private Concentracion concentracion;
-    private double concentracionActual;
     private double destreza;
     private Coche coche;
     private int puntosAcumulados;
@@ -57,7 +56,6 @@ public abstract class Piloto
     {
         this.nombre = nombre;
         this.concentracion = concentracion;
-        this.concentracionActual = concentracion.getValor();
         this.descalificado = false;
         this.puntosAcumulados = 0;
         this.participacionEnCarreras = 0;
@@ -115,15 +113,6 @@ public abstract class Piloto
      */
     public void setConcentracion(Concentracion conc){
         this.concentracion = conc;
-    }
-    
-    public double getConcentracionActual(){
-        return concentracionActual;
-    }
-    
-    
-    public void setConcentracionActual(double concentracion){
-        this.concentracionActual = concentracion;
     }
     
     
@@ -223,7 +212,7 @@ public abstract class Piloto
         this.destreza = destreza;
     }
     
-    public abstract void calcularDestreza();
+    public abstract double calcularDestreza();
     
     /*public void conducir(Coche coche, Circuito circuito){
         double tet = coche.tiempoEnTerminar(circuito.getDistancia(), coche.velocidadReal(coche.getVelocidad(), getDestreza(), circuito.getComplejidad()));
@@ -253,4 +242,13 @@ public abstract class Piloto
         }
     }
     */
+   
+   public String getTipoPiloto(){
+     return "";  
+    }
+   
+   public String toString(){
+       return "<piloto: " + getNombre() + "> <tipo:"+ getTipoPiloto() + "> <dest:" + calcularDestreza() + "> <conc: " +
+       getConcentracion() + "(" +getValorConcentracion()+ ")> <descalificado: " + getDescalificado();
+    }
 }

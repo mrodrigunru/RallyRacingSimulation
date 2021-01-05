@@ -17,6 +17,11 @@ public class Gravilla extends CircuitoDecorator
         setDistanciaActual(0.95 * getDistanciaActual());
     
     }
+    
+    @Override
+    public String getCondiciones(){
+        return getDecoratedCircuito().getCondiciones() + getClass().getName();
+    }
 
 
 }

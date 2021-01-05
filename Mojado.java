@@ -17,5 +17,10 @@ public class Mojado extends CircuitoDecorator
         setComplejidadActual(1.15 * getComplejidadActual());
         setDistanciaActual(0.85 * getDistanciaActual());
     }
+    
+    @Override
+    public String getCondiciones(){
+        return getDecoratedCircuito().getCondiciones() + getClass().getName();
+    }
 
 }

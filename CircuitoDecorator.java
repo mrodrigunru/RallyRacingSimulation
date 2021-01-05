@@ -31,6 +31,10 @@ public abstract class CircuitoDecorator implements Circuito
         decoratedCircuito = circuito;
     }
     
+    public Circuito getDecoratedCircuito(){
+        return decoratedCircuito;
+    }
+    
     public String getNombre(){
         return decoratedCircuito.getNombre();
     }

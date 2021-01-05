@@ -17,5 +17,10 @@ public class Frio extends CircuitoDecorator
         setDistanciaActual(0.9 * getDistanciaActual());
     
     }
+    
+    @Override
+    public String getCondiciones(){
+        return getDecoratedCircuito().getCondiciones() + getClass().getName();
+    }
 
 }

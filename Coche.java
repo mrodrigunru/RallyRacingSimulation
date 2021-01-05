@@ -116,4 +116,8 @@ public interface Coche
      */
     public void setCombustibleActual(double combustible);
     
+    public String getTipo();
+    
+    public String toString();
+    
 }

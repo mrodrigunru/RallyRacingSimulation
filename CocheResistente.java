@@ -7,7 +7,7 @@
  */
 public class CocheResistente extends CocheAbstract
 {
-    int reserva = 100;
+    private double reserva = 100;
     
     /**
      * Constructor for objects of class CocheResistente
@@ -18,18 +18,40 @@ public class CocheResistente extends CocheAbstract
     }
 
   
+    public double getReserva(){
+        return reserva;
+    }
+    
+    public void setReserva(double reserva){
+        this.reserva = reserva;
+    }
+    
     
     @Override
     public double combustibleRestante(Combustible combustible, int tiempoEnTerminar){
        double cr = 0.0;
        double comb = combustible.getValor();
+       double reserva = getReserva();
        
        if (reserva != 0 && tiempoEnTerminar > comb){
            comb = comb + reserva;
            reserva = 0;
         }
         cr = comb - tiempoEnTerminar;
-        
+        super.setCombustibleActual(cr);
+        setReserva(reserva);
        return cr;
     }
-}
+    
+    @Override
+    public String getTipo(){
+        return getClass().getName();
+    }
+    
+     @Override
+     public String toString(){
+        return "<coche:" +getNombre() + "> <tipo:" + getTipo() + "> <vel_teó:" +  getVelocidad() +
+         "(" + getValorVelocidad() + ")> <comb: "+ getCombustible() + "(" + getValorCombustible() + ") (actual:" + getCombustibleActual() +
+         ")> > <reserva: " + getReserva() + ">";
+     }
+    }

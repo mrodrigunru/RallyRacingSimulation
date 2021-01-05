@@ -7,7 +7,7 @@
  */
 public class CocheRapido extends CocheAbstract
 {
-    int nitro = 80;
+    private int nitro = 80;
 
     /**
      * Constructor for objects of class CocheRapido
@@ -17,6 +17,15 @@ public class CocheRapido extends CocheAbstract
         super(nombre,velocidad,combustible);
     }
 
+    public int getNitro(){
+        return nitro;
+    }
+    
+    public void setNitro(int nitro){
+        this.nitro = nitro;
+    }
+    
+    
     /**
      * Calcula la velocidad de un coche con nitro
      * 
@@ -30,17 +39,31 @@ public class CocheRapido extends CocheAbstract
         double vmax = 0.0;
         double vt = velocidad.getValor();
         double cc = complejidad.getValor();
+        int nitroRestante = getNitro();
         
         vr = vt * destreza;
         vr = vr / cc;
         vmax = vr + vr * 0.2;
-        if (nitro != 0){
-            while(vr <= vmax && nitro > 0){
+        if (nitroRestante != 0){
+            while(vr <= vmax && nitroRestante > 0){
+                
                 vr ++;
-                nitro --;
+                nitroRestante --;
             }
         }
-        
+        setNitro(nitroRestante);
         return vr;
+    }
+    
+   
+    public String getTipo(){
+        return getClass().getName();
+    }
+    
+    @Override
+    public String toString(){
+        return "<coche:" +getNombre() + "> <tipo:" + getTipo() + "> <vel_teó:" +  getVelocidad() +
+         "(" + getValorVelocidad() + ")> <comb: "+ getCombustible() + "(" + getValorCombustible() + ") (actual:" + getCombustibleActual() +
+         ")> > <nitroPendiente: " + getNitro() + ">";
     }
 }

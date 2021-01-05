@@ -80,4 +80,8 @@ public interface Circuito
     public void setDistanciaOriginal(Distancia disNew);
     
     public void setDistanciaActual(double disAc);
+    
+    public String getCondiciones();
+    
+    public String toString();
 }

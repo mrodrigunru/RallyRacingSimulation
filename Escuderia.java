@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Set;
 import java.util.LinkedHashSet;
+import java.util.Iterator;
 /**
  * Represenata a cada escudería en la competicion
  * 
@@ -11,17 +13,17 @@ public class Escuderia
 {
     private String nombreEsc;
     private ArrayList <Piloto> pilotos;
-    //TODO comparador de pilotos
+    private MegaComparadorPilotos mgp;
     private ArrayList<Coche> coches;
     //TODO comparador de coches
     /**
      * Constructor for objects of class Escuderia
      */
-    public Escuderia(String nombre) //añadir megacomparador al constructor por parametro
+    public Escuderia(String nombre, MegaComparadorPilotos mgp)
     {
        nombreEsc = nombre;
        pilotos = new ArrayList<Piloto>();
-       //comparador pilotos
+       this.mgp = mgp;
        coches = new ArrayList<Coche>();
        //comparador coches
     }
@@ -39,7 +41,11 @@ public class Escuderia
     
     public void nuevoPiloto(Piloto piloto){
         pilotos.add(piloto);
-        //añadir criterio de ordenacion
+        
+    }
+    
+    public void ordenarPilotos(){
+        Collections.sort(pilotos,mgp);
     }
     
     public String getNombre(){
@@ -51,18 +57,26 @@ public class Escuderia
     }
     
     /**
-     * Saca el primer piloto de la lista, lo devuelve y lo vuelve a insertar al final
+     * Saca el primer piloto de la lista que no este descalificado, lo devuelve
      * 
      * @return el primer piloto de la lista
      */
     public Piloto sacarPiloto(){
-        if (!pilotos.isEmpty()){
-        Piloto p = pilotos.get(0);
-        pilotos.remove(0);
-        pilotos.add(p);
-        return p;
-       }
-       else return null;
+        Piloto p = null;
+        int i = 0;
+        while ( i < pilotos.size()){
+            if(pilotos.get(i).getDescalificado() == false){
+            p = pilotos.get(i);
+        
+            }
+            else i++;
+        }
+        
+         return p;
+    }
+    
+    public void devolverPiloto(Piloto p1){
+        pilotos.add(p1);
     }
     
     public int contarPilotos(){
@@ -82,7 +96,6 @@ public class Escuderia
     
     public void nuevoCoche(Coche coche){
         coches.add(coche);
-        //añadir criterio de ordenacion
     }
     
     /**
@@ -102,5 +115,9 @@ public class Escuderia
     
     public int contarCoches(){
         return coches.size();
+    }
+    
+    public String toString(){
+        return "%%%"+getNombre()+"%%%";
     }
 }

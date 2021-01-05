@@ -23,7 +23,7 @@ public class PilotoNovato extends Piloto
      * @param  concentracion: concentracion del piloto
      * @return     (none)
      */
-     public void calcularDestreza()
+     public double calcularDestreza()
     {
         double dest = 0.0;
         double conc = super.getConcentracion().getValor();
@@ -31,7 +31,11 @@ public class PilotoNovato extends Piloto
         dest = dest / 120;
         dest = dest - 0.03;
         
-        super.setDestreza(dest);
+        return dest;
         
+    }
+    
+    public String getTipoPiloto(){
+     return getClass().getName();  
     }
 }

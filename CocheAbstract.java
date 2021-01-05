@@ -52,6 +52,7 @@ public abstract class CocheAbstract implements Coche
         double comb = combustible.getValor();
         
         cr = comb - tiempoEnTerminar;
+        this.combustibleActual = cr;
         return cr;
     }
     
@@ -94,5 +95,10 @@ public abstract class CocheAbstract implements Coche
     
     public void setCombustibleActual(double combustible){
         this.combustibleActual = combustible;
+    }
+    
+    
+    public String toString(){
+        return "";
     }
 }
