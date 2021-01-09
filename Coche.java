@@ -16,7 +16,7 @@ public interface Coche
      *          Complejidad complejidad: complejidad del circuito
      * @return        double velocidadReal: la velocidad real del coche
      */
-    public double velocidadReal(Velocidad velocidad, double destreza, Complejidad complejidad);
+    public double velocidadReal(Velocidad velocidad, double destreza, double complejidad);
     
     /**
      * Calcula el tiempo en terminar de los coches en el circuito
@@ -25,7 +25,7 @@ public interface Coche
      *          double velocidadReal: velocidad real del coche
      * @return        double tiempoEnTerminar: el tiempo que tarda un coche en completar el circuito
      */
-    public double tiempoEnTerminar(Distancia distancia, double velocidadReal);
+    public double tiempoEnTerminar(double distancia, double velocidadReal);
     
     /**
      * Calcula el combustible que queda en el coche al terminar el circuito

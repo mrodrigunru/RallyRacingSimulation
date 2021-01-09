@@ -34,11 +34,11 @@ public class CocheRapido extends CocheAbstract
      *          Complejidad complejidad: complejidad del circuito
      */
     @Override
-    public double velocidadReal(Velocidad velocidad, double destreza, Complejidad complejidad){
+    public double velocidadReal(Velocidad velocidad, double destreza, double complejidad){
         double vr = 0.0;
         double vmax = 0.0;
         double vt = velocidad.getValor();
-        double cc = complejidad.getValor();
+        double cc = complejidad;
         int nitroRestante = getNitro();
         
         vr = vt * destreza;

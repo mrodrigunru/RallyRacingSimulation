@@ -26,10 +26,10 @@ public abstract class CocheAbstract implements Coche
         
     }
     
-    public double velocidadReal(Velocidad velocidad, double destreza, Complejidad complejidad){
+    public double velocidadReal(Velocidad velocidad, double destreza, double complejidad){
         double vr = 0.0;
         double vt = velocidad.getValor();
-        double cc = complejidad.getValor();
+        double cc = complejidad;
         
         vr = vt * destreza;
         vr = vr / cc;
@@ -37,9 +37,9 @@ public abstract class CocheAbstract implements Coche
     }
     
     
-    public double tiempoEnTerminar(Distancia distancia, double velocidadReal){
+    public double tiempoEnTerminar(double distancia, double velocidadReal){
         double tet= 0.0;
-        double dis = distancia.getValor();
+        double dis = distancia;
         
         tet = dis / velocidadReal;
         tet = tet * 60;

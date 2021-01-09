@@ -136,22 +136,38 @@ public abstract class Piloto
         this.coche = coche;
     }
     
-    /*public double getTiempoEnCircuito(String nomCircuito){
-        return Resultados.get(nomCircuito).getTiempo();
+    public double getTiempoEnCircuito(String nomCircuito){
+        Resultados res = resultados.get(nomCircuito);
+        return res.getTiempo();
+        
     }
     
-    public void setTiempoEnCircuito (double tiempo){
-        this.tiempoEnCircuito = tiempo;
+    public void crearEntradaResultados(String nomCircuito, double tiempo, double puntos){
+        Resultados res = new Resultados();
+        res.setTiempo(tiempo);
+        res.setPuntos(puntos);
+        
+        resultados.put(nomCircuito, res);
     }
     
-    public int getPuntosEnCircuito(){
-        return puntosEnCircuito;
+    public void setTiempoEnCircuito (String nomCircuito, double tiempo){
+        Resultados res = resultados.get(nomCircuito);
+        
+        res.setTiempo(tiempo);
     }
     
-    public void setPuntosEnCircuito(int puntos){
-        this.puntosEnCircuito = puntos;
+    public void setPuntosEnCircuito (String nomCircuito, double puntos){
+        Resultados res = resultados.get(nomCircuito);
+        
+        res.setPuntos(puntos);
     }
-    */
+    
+    public double getPuntosEnCircuito(String nomCircuito){
+        Resultados res = resultados.get(nomCircuito);
+        return res.getPuntos();
+        
+    }
+    
     public int getPuntosAcumulados(){
         return puntosAcumulados;
     }
@@ -214,34 +230,30 @@ public abstract class Piloto
     
     public abstract double calcularDestreza();
     
-    /*public void conducir(Coche coche, Circuito circuito){
-        double tet = coche.tiempoEnTerminar(circuito.getDistancia(), coche.velocidadReal(coche.getVelocidad(), getDestreza(), circuito.getComplejidad()));
+    public void conducir(Coche coche, Circuito circuito){
+        double tet = coche.tiempoEnTerminar(circuito.getDistanciaActual(), coche.velocidadReal(coche.getVelocidad(), calcularDestreza(), circuito.getComplejidadActual()));
         double conc = getValorConcentracion();
         double comb = coche.getCombustibleActual();
         
         if (tet < conc && tet < comb){
-           //resultado.setTiempoEnCircuito(tet);
+           crearEntradaResultados(circuito.getNombre(), tet, 0.0 );
            comb = comb - tet;
            coche.setCombustibleActual(comb);
         }
-        if (tet > conc && tet < comb){
+        else if (tet > conc && tet < comb){
             conc = conc - tet;
-           //resultado.setConcentracionExtra(conc);
+           crearEntradaResultados(circuito.getNombre(), tet, 0.0 );
            comb = comb - conc;
            coche.setCombustibleActual(comb);
-        }
-        if(tet < conc && tet > comb){
-            comb = comb - tet;
-            //resultado.setCombustibleExtra(comb);
-            comb = comb - comb;
-            coche.setCombustibleActual(comb);
-            
-            //o ponemos un return que devuelva el combustible que le queda al coche o
-            //hay que hacer un método que actualice el combustible que le queda al coche
-            //tu elijes
-        }
+              }
+            else if(tet < conc && tet > comb){
+                comb = comb - tet;
+                crearEntradaResultados(circuito.getNombre(), comb, 0.0 );
+                comb = 0;
+                coche.setCombustibleActual(comb);
+                   }
     }
-    */
+    
    
    public String getTipoPiloto(){
      return "";  
