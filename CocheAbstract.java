@@ -1,3 +1,4 @@
+import java.io.*;
 /**
  * Abstract class CocheAbstract - maneja todos los campos relacionados con coche
  * @author: Manuel Rodriguez && Marcos Santos
@@ -26,7 +27,7 @@ public abstract class CocheAbstract implements Coche
         
     }
     
-    public double velocidadReal(Velocidad velocidad, double destreza, double complejidad){
+    public double velocidadReal( double destreza, double complejidad){
         double vr = 0.0;
         double vt = velocidad.getValor();
         double cc = complejidad;
@@ -47,7 +48,7 @@ public abstract class CocheAbstract implements Coche
     }
     
     
-    public double combustibleRestante(Combustible combustible, int tiempoEnTerminar){
+    public double combustibleRestante(Combustible combustible, double tiempoEnTerminar) throws IOException{
         double cr = 0.0;
         double comb = combustible.getValor();
         
@@ -95,6 +96,23 @@ public abstract class CocheAbstract implements Coche
     
     public void setCombustibleActual(double combustible){
         this.combustibleActual = combustible;
+    }
+    
+        /**
+     *
+     * It prints a chain both in logFile and console
+     * 
+     * @throws IOException if there is an error in Input/Output operations
+     */
+    public void print (String chain) throws IOException{
+        LogFile lg = LogFile.getInstance();
+        lg.write(chain);
+        System.out.println(chain);
+
+    } 
+    
+    public int getMod(){
+        return 0;
     }
     
     

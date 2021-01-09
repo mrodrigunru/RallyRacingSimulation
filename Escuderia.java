@@ -67,7 +67,6 @@ public class Escuderia
         
             if(pilotos.get(i).getDescalificado() == false){
             p = pilotos.get(i);
-            pilotos.remove(i);
         
             }
             return p;
@@ -119,7 +118,6 @@ public class Escuderia
 
             if(coches.get(i).getCombustibleActual() > 0){
             c = coches.get(i);
-            coches.remove(i);
         
        }
        return c;
@@ -132,33 +130,62 @@ public class Escuderia
     public int contarCoches(){
         return coches.size();
     }
+    /**
+     *
+     * It prints a chain both in logFile and console
+     * 
+     * @throws IOException if there is an error in Input/Output operations
+     */
+    public void print (String chain) throws IOException{
+        LogFile lg = LogFile.getInstance();
+        lg.write(chain);
+        System.out.println(chain);
+
+    } 
+    
+    public void asignarCoches() throws IOException{
+        Iterator<Piloto> itp = pilotos.iterator();
+        Iterator<Coche> itc = coches.iterator();
+        
+        Piloto pa = null;
+        Coche ca = null;
+        while(itp.hasNext() && itc.hasNext()){
+         pa = itp.next();
+         ca = itc.next();
+         
+         if (!pa.getDescalificado()){
+                if(ca.getCombustibleActual() > 0){
+                    pa.setCoche(ca);
+                }
+                else print("el piloto no puede ser enviado a esta carrera por no tener un coche disponible");
+            }
+            
+            
+        }
+    }
     
     public String toString(){
         return "%%%"+getNombre()+"%%%";
     }
     
     public void mostrarCadaEscuderia() throws IOException{
-        LogFile lg = LogFile.getInstance();
         String chain;
         
         chain = toString();
-        System.out.println(chain);
-        lg.write(chain); 
-
+        print(chain);   
+        
         ArrayList<Piloto> pilotos=getPilotos();
         for(Piloto piloto : pilotos)
         {
             chain = piloto.toString();
-            System.out.println(chain);
-            lg.write(chain);             
+            print(chain);            
         }
         
         ArrayList<Coche> coches=getCoches();
         for(Coche coche : coches)
         {
             chain = coche.toString();
-            System.out.println(chain);
-            lg.write(chain);             
+            print(chain);                
         }
     }
     

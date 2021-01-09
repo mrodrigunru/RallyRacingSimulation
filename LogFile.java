@@ -9,8 +9,7 @@ import java.util.Iterator;
 import java.util.Set;
 /**
  * The writer of the file output.log
- *  Nombre del grupo: Depé SL
- * @author Daniel Corzo Gonzalez, Angel Romero Trigo & Manuel Rodriguez Rodriguez
+ *  @author Manuel Rodriguez Rodriguez
  * 
  * @version 1.0
  */

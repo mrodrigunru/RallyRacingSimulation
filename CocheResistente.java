@@ -1,4 +1,4 @@
-
+import java.io.*;
 /**
  * Write a description of class CocheResistente here.
  * 
@@ -28,7 +28,7 @@ public class CocheResistente extends CocheAbstract
     
     
     @Override
-    public double combustibleRestante(Combustible combustible, int tiempoEnTerminar){
+    public double combustibleRestante(Combustible combustible, double tiempoEnTerminar) throws IOException{
        double cr = 0.0;
        double comb = combustible.getValor();
        double reserva = getReserva();
@@ -36,6 +36,7 @@ public class CocheResistente extends CocheAbstract
        if (reserva != 0 && tiempoEnTerminar > comb){
            comb = comb + reserva;
            reserva = 0;
+           print("+++ El"+ getNombre() +"tiene que recurrir al depósito de reserva para poder correr +++");
         }
         cr = comb - tiempoEnTerminar;
         super.setCombustibleActual(cr);

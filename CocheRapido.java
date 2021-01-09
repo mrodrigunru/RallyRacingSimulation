@@ -7,7 +7,8 @@
  */
 public class CocheRapido extends CocheAbstract
 {
-    private int nitro = 80;
+    private int nitroOriginal = 80;
+    private int nitroRes;
 
     /**
      * Constructor for objects of class CocheRapido
@@ -15,31 +16,40 @@ public class CocheRapido extends CocheAbstract
     public CocheRapido(String nombre, Velocidad velocidad, Combustible combustible)
     {
         super(nombre,velocidad,combustible);
+        nitroRes= getNitroOriginal();
     }
 
-    public int getNitro(){
-        return nitro;
+    public int getNitroOriginal(){
+        return nitroOriginal;
     }
     
-    public void setNitro(int nitro){
-        this.nitro = nitro;
+    public void setNitroOriginal(int nitro){
+        this.nitroOriginal = nitro;
     }
+    
+    public int getNitroRes(){
+        return nitroRes;
+    }
+    
+    public void setNitroRes(int nitro){
+        this.nitroRes = nitro;
+    }
+    
     
     
     /**
      * Calcula la velocidad de un coche con nitro
      * 
-     * @param   Velocidad velocidad: velocidad teorica del vehiculo,
-     *          double destreza: destreza del piloto
+     * @param   double destreza: destreza del piloto
      *          Complejidad complejidad: complejidad del circuito
      */
     @Override
-    public double velocidadReal(Velocidad velocidad, double destreza, double complejidad){
+    public double velocidadReal( double destreza, double complejidad){
         double vr = 0.0;
         double vmax = 0.0;
-        double vt = velocidad.getValor();
+        double vt = getValorVelocidad();
         double cc = complejidad;
-        int nitroRestante = getNitro();
+        int nitroRestante = getNitroOriginal();
         
         vr = vt * destreza;
         vr = vr / cc;
@@ -51,11 +61,15 @@ public class CocheRapido extends CocheAbstract
                 nitroRestante --;
             }
         }
-        setNitro(nitroRestante);
+        setNitroRes(nitroRestante);
         return vr;
     }
     
-   
+    @Override
+    public int getMod(){
+        return getNitroRes();
+    }
+    
     public String getTipo(){
         return getClass().getName();
     }
@@ -64,6 +78,6 @@ public class CocheRapido extends CocheAbstract
     public String toString(){
         return "<coche:" +getNombre() + "> <tipo:" + getTipo() + "> <vel_teó:" +  getVelocidad() +
          "(" + getValorVelocidad() + ")> <comb: "+ getCombustible() + "(" + getValorCombustible() + ") (actual:" + getCombustibleActual() +
-         ")> > <nitroPendiente: " + getNitro() + ">";
+         ")> > <nitroPendiente: " + getNitroRes() + ">";
     }
 }

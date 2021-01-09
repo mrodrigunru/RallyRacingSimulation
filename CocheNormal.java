@@ -7,8 +7,7 @@
  */
 public class CocheNormal extends CocheAbstract
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    
 
     /**
      * Constructor for objects of class CocheNormal

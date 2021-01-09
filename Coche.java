@@ -1,4 +1,4 @@
-
+import java.io.*;
 /**
  * Write a description of interface Coche here.
  * 
@@ -11,12 +11,12 @@ public interface Coche
     /**
      * Calcula la velocidad real de los coches en el cirucito
      * 
-     * @param   Velocidad velocidad: velocidad teorica del vehiculo,
+     * @param   
      *          double destreza: destreza del piloto
      *          Complejidad complejidad: complejidad del circuito
      * @return        double velocidadReal: la velocidad real del coche
      */
-    public double velocidadReal(Velocidad velocidad, double destreza, double complejidad);
+    public double velocidadReal( double destreza, double complejidad);
     
     /**
      * Calcula el tiempo en terminar de los coches en el circuito
@@ -34,7 +34,7 @@ public interface Coche
      *          double tiempoEnTerminar: tiempo que tarda un coche en completar el circuito
      * @return        double combustibleRestante: el combustible restante del coche
      */
-    public double combustibleRestante(Combustible combustible, int tiempoEnTerminar);
+    public double combustibleRestante(Combustible combustible, double tiempoEnTerminar) throws IOException;
     
     /**
      * Metodo que devuelve el nombre del coche
@@ -119,5 +119,7 @@ public interface Coche
     public String getTipo();
     
     public String toString();
+    
+    public int getMod();
     
 }

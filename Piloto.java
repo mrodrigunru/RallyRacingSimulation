@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.HashMap;
 
 /**
@@ -230,31 +231,71 @@ public abstract class Piloto
     
     public abstract double calcularDestreza();
     
-    public void conducir(Coche coche, Circuito circuito){
-        double tet = coche.tiempoEnTerminar(circuito.getDistanciaActual(), coche.velocidadReal(coche.getVelocidad(), calcularDestreza(), circuito.getComplejidadActual()));
+    public void conducir(Coche coche, Circuito circuito) throws IOException{
+        double tet = coche.tiempoEnTerminar(circuito.getDistanciaActual(), coche.velocidadReal(calcularDestreza(), circuito.getComplejidadActual()));
         double conc = getValorConcentracion();
-        double comb = coche.getCombustibleActual();
+        double comb = coche.combustibleRestante(coche.getCombustible(), tet);
         
         if (tet < conc && tet < comb){
            crearEntradaResultados(circuito.getNombre(), tet, 0.0 );
            comb = comb - tet;
            coche.setCombustibleActual(comb);
+           
+           print("+++ nombrePiloto termina la carrera en"+ getTiempoEnCircuito(circuito.getNombre()) +" minutos +++");
+           print("+++ El combustible del nombreCoche tras la carrera es"+ coche.getCombustibleActual() +"+++");
+           
+           sumarUnaParticipacionEnCarreras();
+           sumarUnaCarrerasTerminadas();
+             
         }
-        else if (tet > conc && tet < comb){
-            conc = conc - tet;
-           crearEntradaResultados(circuito.getNombre(), tet, 0.0 );
+        else if (tet > conc){
+           conc = conc - tet;
+           crearEntradaResultados(circuito.getNombre(), conc, 0.0 );
            comb = comb - conc;
            coche.setCombustibleActual(comb);
+           sumarUnaCarrerasAbandonadas();
+           
+         print("¡¡¡ nombrePiloto perdió la concentración a falta de"+
+          -getTiempoEnCircuito(circuito.getNombre()) +"minutos para terminar !!!");
+         print("¡¡¡ En el momento del despiste llevaba en carrera"+ getValorConcentracion()+ " minutos !!!");
+         
+         setDescalificado(true);
+         
+         print("@@@");
+         print("@@@");
               }
-            else if(tet < conc && tet > comb){
+            else if(tet > comb){
                 comb = comb - tet;
                 crearEntradaResultados(circuito.getNombre(), comb, 0.0 );
-                comb = 0;
+                
                 coche.setCombustibleActual(comb);
+                sumarUnaCarrerasAbandonadas();
+                
+                
+             print("¡¡¡ El nombreCoche se quedó sin combustible a falta de" +
+             -getTiempoEnCircuito(circuito.getNombre()) + "minutos para terminar !!!");
+             print("¡¡¡ En el momento de quedarse sin combustible llevaba en carrera "+coche.getCombustibleActual()+  " minutos !!!");
+             
+              coche.setCombustibleActual(comb);
+              setDescalificado(true);
+             
+             print("@@@");
+             print("@@@");
                    }
     }
     
-   
+    /**
+     *
+     * It prints a chain both in logFile and console
+     * 
+     * @throws IOException if there is an error in Input/Output operations
+     */
+    public void print (String chain) throws IOException{
+        LogFile lg = LogFile.getInstance();
+        lg.write(chain);
+        System.out.println(chain);
+
+    } 
    public String getTipoPiloto(){
      return "";  
     }
