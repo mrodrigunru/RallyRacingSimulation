@@ -14,8 +14,8 @@ public class Nocturno extends CircuitoDecorator
     public Nocturno(String nombre, Complejidad comp, Distancia dis, Circuito circuito)
     {
         super(nombre, comp, dis, circuito);
-        setComplejidadActual(1.2 * getComplejidadActual());
-        setDistanciaActual(0.8 * getDistanciaActual());
+        setComplejidadActual(decimals(1.2 * getComplejidadActual(), 2));
+        setDistanciaActual(decimals(0.8 * getDistanciaActual(), 2));
     }
     
     @Override

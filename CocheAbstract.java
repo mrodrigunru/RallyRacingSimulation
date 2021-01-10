@@ -27,7 +27,7 @@ public abstract class CocheAbstract implements Coche
         
     }
     
-    public double velocidadReal( double destreza, double complejidad){
+    public double velocidadReal( double destreza, double complejidad) throws IOException{
         double vr = 0.0;
         double vt = velocidad.getValor();
         double cc = complejidad;
@@ -110,10 +110,6 @@ public abstract class CocheAbstract implements Coche
         System.out.println(chain);
 
     } 
-    
-    public int getMod(){
-        return 0;
-    }
     
     
     public String toString(){

@@ -14,8 +14,8 @@ public class Mojado extends CircuitoDecorator
     {
         super(nombre, comp, dis, circuito);
    
-        setComplejidadActual(1.15 * getComplejidadActual());
-        setDistanciaActual(0.85 * getDistanciaActual());
+        setComplejidadActual(decimals(1.15 * getComplejidadActual(), 2));
+        setDistanciaActual(decimals(0.85 * getComplejidadActual(), 2));
     }
     
     @Override

@@ -81,6 +81,15 @@ public interface Circuito
     
     public void setDistanciaActual(double disAc);
     
+    /**
+     * @param number the number which precision we want to correct
+     * @param digits the number of decimals we want number to have
+     * 
+     * @return the number with his presision corrected
+     */
+    
+    public abstract double decimals(double number, int digits);
+    
     public String getCondiciones();
     
     public String toString();

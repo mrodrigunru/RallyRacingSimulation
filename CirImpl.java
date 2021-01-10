@@ -27,6 +27,21 @@ public class CirImpl implements Circuito
         this.distanciaActual = distancia.getValor();
     }
     
+     /**
+     * @param number the number which precision we want to correct
+     * @param digits the number of decimals we want number to have
+     * 
+     * @return the number with his presision corrected
+     */
+    @Override
+      public  double decimals(double number, int digits) {
+        double result;
+        result = number * Math.pow(10, digits);
+        result = Math.round(result);
+        result = result/Math.pow(10, digits);
+        return result;
+    }
+    
     @Override
     public String getNombre(){
         return nombre;

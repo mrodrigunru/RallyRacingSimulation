@@ -1,4 +1,4 @@
-
+import java.io.*;
 /**
  * Write a description of class CocheRapido here.
  * 
@@ -44,7 +44,7 @@ public class CocheRapido extends CocheAbstract
      *          Complejidad complejidad: complejidad del circuito
      */
     @Override
-    public double velocidadReal( double destreza, double complejidad){
+    public double velocidadReal( double destreza, double complejidad) throws IOException{
         double vr = 0.0;
         double vmax = 0.0;
         double vt = getValorVelocidad();
@@ -60,14 +60,16 @@ public class CocheRapido extends CocheAbstract
                 vr ++;
                 nitroRestante --;
             }
+             
+            int usado = getNitroOriginal() - nitroRestante;
+            print("+++ El nombreCoche usa "+ usado +" de nitro para alcanzar"+
+            vr +" km/hora y el nitro restante es"+
+            nitroRestante +"+++");
+                        
+
         }
         setNitroRes(nitroRestante);
         return vr;
-    }
-    
-    @Override
-    public int getMod(){
-        return getNitroRes();
     }
     
     public String getTipo(){

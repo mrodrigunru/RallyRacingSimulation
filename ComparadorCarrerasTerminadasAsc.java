@@ -5,7 +5,7 @@ import java.util.Comparator;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ComparadorDestrezaAsc extends MegaComparadorPilotos
+public class ComparadorCarrerasTerminadasAsc extends MegaComparadorPilotos
 {
     
     /**
@@ -18,13 +18,14 @@ public class ComparadorDestrezaAsc extends MegaComparadorPilotos
     public int compare(Piloto p1, Piloto p2)
     {
         int i = 0;
-        if (p1.calcularDestreza() == p2.calcularDestreza()){
+        if (p1.getCarrerasTerminadas() == p2.getCarrerasTerminadas()){
              if (p1.getNombre().compareTo(p2.getNombre()) < 0) i = -1;
                    else if (p1.getNombre().compareTo(p2.getNombre()) > 0) i = 1;
                }
-        else if (p1.calcularDestreza() > p2.calcularDestreza())
+        else if (p1.getCarrerasTerminadas() > p2.getCarrerasTerminadas())
         i= 1;
         else i= -1;
         return i;
     }
 }
+

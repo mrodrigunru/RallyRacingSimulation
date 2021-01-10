@@ -21,25 +21,28 @@ public class Organizacion
     private HashMap<String, Escuderia> escuderias;
     private ArrayList<Piloto> pilotosCarrera;
     private MegaComparadorPilotos mgp;
+    private ArrayList<Piloto> descalificados;
 
     private static Organizacion instance = null;
 
-    /**
-     * A comparator of the energy points 
+/**
+     * A comparator of the puntos totales de escuderia
      */
-    public class ComparadorNombreAsc implements Comparator<Piloto>
+    public class ComparatorPuntosEsc implements Comparator<Escuderia>
     {
 
-        public int compare (Piloto c1, Piloto c2){
+        public int compare (Escuderia c1, Escuderia c2){
             int i =0;
-
-            if (c1.getNombre().compareTo(c2.getNombre()) < 0) i = -1;
-            if (c1.getNombre().compareTo(c2.getNombre()) > 0) i = 1;
-
+            if (c1.totalPuntosEscuderia() < c2.totalPuntosEscuderia()) i = 1;
+            if (c1.totalPuntosEscuderia() > c2.totalPuntosEscuderia()) i = -1;
+            if(c1.totalPuntosEscuderia() == c2.totalPuntosEscuderia()){
+                if (c1.getNombre().compareTo(c2.getNombre()) < 0) i = 1;
+                if (c1.getNombre().compareTo(c2.getNombre()) > 0) i = -1;
+            }
             return i;
         }
     }
-
+    
     /**
      * Constructor for objects of class Organization. Es privado debido al Singleton
      */
@@ -50,6 +53,7 @@ public class Organizacion
         circuitos = new TreeSet<Circuito>(mgcir);
         escuderias = new HashMap<String, Escuderia>();
         pilotosCarrera = new  ArrayList<Piloto>();
+        descalificados = new ArrayList<Piloto>();
 
     }
 
@@ -132,6 +136,11 @@ public class Organizacion
         pilotosCarrera.add(piloto);
     }
 
+    public void inscripcion() throws IOException{
+        for(Escuderia escuderia : escuderias.values()){
+            escuderia.asignarCoches();
+        }
+    }
     public void mostrarEscuderias() throws IOException{
         print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         print("%%%%%%%% ESCUDERÍAS DEL CAMPEONATO %%%%%%%%");
@@ -190,10 +199,13 @@ public class Organizacion
     public void competir() throws IOException{
 
         boolean fin = false;
-        while(!fin){
-            Iterator<Circuito> itc = circuitos.iterator();
+        Iterator<Circuito> itc = circuitos.iterator();
+        while(!fin || !itc.hasNext() ){
+            
             int n = 1;
             while (itc.hasNext()){
+                
+                inscripcion();
 
                 for(Escuderia escuderia : escuderias.values()){
                     int i = 0;
@@ -201,13 +213,13 @@ public class Organizacion
                         Piloto p = null;
                         p = escuderia.sacarPiloto(i);
 
-                        if( p != null)pilotosCarrera.add(p);
+                        if( !p.getDescalificado()) pilotosCarrera.add(p);
 
                         i++;
                     }
 
                 }
-                Collections.sort(pilotosCarrera, new ComparadorNombreAsc());
+                Collections.sort(pilotosCarrera, new ComparadorPuntosCarrerasAsc());
 
                 Circuito circuitoActual = itc.next();
                 print("********************************************************************************************************");
@@ -245,13 +257,7 @@ public class Organizacion
                         print(coche.toString());
                         print("+++ Con estas condiciones es capaz de correr a" + coche.velocidadReal( pilotoActual.calcularDestreza(), circuitoActual.getComplejidadActual()) + "km/hora +++");
 
-                        if (coche.getTipo().equals("CocheRapido")){
-                            int usado = 80 - coche.getMod();
-                            print("+++ El nombreCoche usa "+ usado +" de nitro para alcanzar"+
-                                coche.velocidadReal( pilotoActual.calcularDestreza(), circuitoActual.getComplejidadActual()) +" km/hora y el nitro restante es"+
-                                coche.getMod() +"+++");
-                        }
-
+                       
                         pilotoActual.conducir(coche, circuitoActual );
 
                         if(pilotoActual.getCarrerasAbandonadas() >= getLimiteAbandonos()){
@@ -265,7 +271,8 @@ public class Organizacion
                     }
                     p++;
                 }
-                Collections.sort(pilotosCarrera,new ComparadorPuntosDesc());
+                
+                Collections.sort(pilotosCarrera,new ComparadorTiempoDesc(circuitoActual));
                 print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                 print("+++++++++++++++++++++++++ Clasificación final de la carrera en "+ circuitoActual.getNombre() +"++++++++++++++++++++++++++");
                 print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -302,7 +309,97 @@ public class Organizacion
             }
         }
     }
+    
+    public void entregaPremios() throws IOException{
+        print("****************************************************");
+        print("**************** FIN DEL CAMPEONATO ****************");
+        print("****************************************************");
+        print("********** CLASIFICACIÓN FINAL DE PILOTOS **********");
+        print("****************************************************");
+        
+        if(condicionFinalizacion() == 0){
+            print("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡");
+            print("¡¡¡ Campeonato de pilotos queda desierto por haber sido descalificados todos los pilotos !!!");
+            print("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡");
+        }
+        else {
+            
+        
+                for(Escuderia escuderia : escuderias.values()){
+                    int i = 0;
+                    while (i<getLimitePilotos()){
+                        Piloto p = null;
+                        p = escuderia.sacarPiloto(i);
 
+                        if( !p.getDescalificado() ) pilotosCarrera.add(p);
+                        else descalificados.add(p);
+                        i++;
+                    }
+
+                }
+                Collections.sort(pilotosCarrera, new ComparadorPuntosDesc());
+                
+                int pole = 1;
+                for(Piloto piloto : pilotosCarrera){
+                    
+                    print("@@@ Posicion(" + pole + "): " + piloto.getNombre() + ") - Puntos Totales: " + piloto.getPuntosAcumulados() + " @@@");
+                    
+                    for (Circuito circuito : circuitos){
+                        print("Carrera(" + circuito.getNombre() + ") - Puntos: " +piloto.getPuntosEnCircuito(circuito.getNombre()) +
+                        " - Tiempo: " + piloto.getTiempoEnCircuito(circuito.getNombre()) + " minutos");
+                    }
+                    pole++;
+                }
+                
+                Collections.sort(descalificados, new ComparadorPuntosDesc());
+                
+                print("****************************************************");
+                print("************** PILOTOS DESCALIFICADOS **************");
+                print("****************************************************");
+                
+                for(Piloto piloto : descalificados){
+                    
+                    print("--- Piloto Descalificado: " + piloto.getNombre() + " - Puntos Totales Anulados: " + piloto.getPuntosAcumulados());
+                    
+                    for (Circuito circuito : circuitos){
+                        print("Carrera(" + circuito.getNombre() + ") - Puntos: " +piloto.getPuntosEnCircuito(circuito.getNombre()) +
+                        " - Tiempo: " + piloto.getTiempoEnCircuito(circuito.getNombre()) + " minutos");
+                    }
+                }
+                
+                
+    }
+    
+            print("****************************************************");
+            print("******** CLASIFICACIÓN FINAL DE ESCUDERÍAS *********");
+            print("****************************************************");
+            
+           ArrayList<Escuderia> clasificacionEsc = new  ArrayList <Escuderia> ();
+            
+            for(Escuderia escuderia : escuderias.values()){
+                   
+                    Escuderia e = escuderias.get(escuderia.getNombre());
+                    clasificacionEsc.add(e);
+
+                }
+                Collections.sort(clasificacionEsc, new ComparatorPuntosEsc());
+                
+             int pole = 1;
+            for(Escuderia escuderia : clasificacionEsc){
+                if(!escuderia.todosDescalificados()){
+                print("@@@ Posicion(" + pole +") " + escuderia.getNombre() + " con " + escuderia.totalPuntosEscuderia() + " puntos @@@" );
+                print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+                escuderia.mostrarCadaEscuderia();
+                print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            }
+            else {
+                print("¡¡¡ Escudería Descalificada: "  + escuderia.getNombre() + " con 0.0 puntos @@@" );
+                print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+                escuderia.mostrarCadaEscuderia();
+                print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            }
+            }
     
     
+   }
 }

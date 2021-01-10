@@ -16,7 +16,7 @@ public interface Coche
      *          Complejidad complejidad: complejidad del circuito
      * @return        double velocidadReal: la velocidad real del coche
      */
-    public double velocidadReal( double destreza, double complejidad);
+    public double velocidadReal( double destreza, double complejidad) throws IOException;
     
     /**
      * Calcula el tiempo en terminar de los coches en el circuito
@@ -119,7 +119,5 @@ public interface Coche
     public String getTipo();
     
     public String toString();
-    
-    public int getMod();
     
 }

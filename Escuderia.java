@@ -64,18 +64,10 @@ public class Escuderia
      */
     public Piloto sacarPiloto(int i){
         Piloto p = null;
-        
-            if(pilotos.get(i).getDescalificado() == false){
             p = pilotos.get(i);
-        
-            }
-            return p;
+          return p;
     }
     
-        public void devolverPiloto(Piloto p){
-        pilotos.add(p);
-    }
-  
     
     public int contarPilotos(){
         return pilotos.size();
@@ -108,6 +100,18 @@ public class Escuderia
         return total;
     }
     
+    public boolean todosDescalificados(){
+        boolean cond = false;
+        int total = 0;
+        for(Piloto piloto : pilotos){
+            if (piloto.getDescalificado() == true){
+                total ++;
+            }
+        }
+        if (total == pilotos.size()) cond = true;
+        return cond;
+    }
+    
     /**
      * Saca el primer coche de la lista, lo devuelve y lo vuelve a insertar al final
      * 
@@ -121,10 +125,6 @@ public class Escuderia
         
        }
        return c;
-    }
-    
-    public void devolverCoche(Coche c){
-        coches.add(c);
     }
     
     public int contarCoches(){
@@ -157,7 +157,7 @@ public class Escuderia
                 if(ca.getCombustibleActual() > 0){
                     pa.setCoche(ca);
                 }
-                else print("el piloto no puede ser enviado a esta carrera por no tener un coche disponible");
+                else print("el piloto "+ pa.getNombre() +" no puede ser enviado a esta carrera por no tener un coche disponible");
             }
             
             
