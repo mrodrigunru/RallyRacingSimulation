@@ -49,7 +49,7 @@ public class CocheRapido extends CocheAbstract
         double vmax = 0.0;
         double vt = getValorVelocidad();
         double cc = complejidad;
-        int nitroRestante = getNitroOriginal();
+        int nitroRestante = getNitroRes();
         
         vr = vt * destreza;
         vr = vr / cc;
@@ -62,13 +62,14 @@ public class CocheRapido extends CocheAbstract
             }
              
             int usado = getNitroOriginal() - nitroRestante;
-            print("+++ El nombreCoche usa "+ usado +" de nitro para alcanzar"+
-            vr +" km/hora y el nitro restante es"+
+            print("+++ El "+getNombre()+" usa "+ usado +" de nitro para alcanzar "+
+            decimals(vr,2) +" km/hora y el nitro restante es "+
             nitroRestante +"+++");
                         
 
         }
         setNitroRes(nitroRestante);
+        setVelReal(vr);
         return vr;
     }
     

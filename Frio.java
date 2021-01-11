@@ -14,7 +14,7 @@ public class Frio extends CircuitoDecorator
     {
         super(nombre, comp, dis, circuito);
         setComplejidadActual(decimals(1.1 * getComplejidadActual(), 2));
-        setDistanciaActual(decimals(0.9 * getComplejidadActual(), 2));
+        setDistanciaActual(decimals(0.9 * getDistanciaActual(), 2));
     
     }
     

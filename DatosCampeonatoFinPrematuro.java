@@ -1,44 +1,38 @@
-import java.util.List;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.Comparator;
-import java.util.Collections;
-import java.util.Iterator;
 import java.io.*;
 /**
- * Clase para inciar los datos de la simulacion
+ * Write a description of class DatosCampeonatoFinPrematuro here.
  * 
- * @author Manuel Rodriguez Rodriguez
- * @version 20/21
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public class DatosCampeonatoCompleto
+public class DatosCampeonatoFinPrematuro
 {
-
-    public DatosCampeonatoCompleto()throws IOException{   
+    
+    /**
+     * Constructor for objects of class DatosCampeonatoFinPrematuro
+     */
+    public DatosCampeonatoFinPrematuro() throws IOException
+    {
         LogFile lg = LogFile.getInstance();
         
         lg.write("*********************************************************************************************************");
-        lg.write("*****************ESTA SIMULACIÓN CONCLUYE NORMALMENTE COMPLETÁNDOSE TODAS LAS CARRERAS*******************");        
+        lg.write("*****************ESTA SIMULACIÓN CONCLUYE CONCLYE ANTES DE FINALIZAR EL CAMPEONATO CON UN UNICO PILOTO SIN DESCALIFICAR******************");        
         lg.write("*********************************************************************************************************\n");
 
-        initData();
+        initData2();
     }
 
-    /**
+        /**
      * Metodo que inicializa las variables de la Organizacion
      * 
      * @param (no params needed)
      * @return (nothing)
      */
-    private void initData() throws IOException{
+    private void initData2() throws IOException{
             Organizacion org = Organizacion.getInstance();
             
-            org.setLimiteAbandonos(3);
-            org.setLimitePilotos(2);
+            org.setLimiteAbandonos(1);
+            org.setLimitePilotos(3);
             
             
             //creacion circuitos
@@ -84,11 +78,11 @@ public class DatosCampeonatoCompleto
             //creacion escuderias
             
             
-            Escuderia Citroen = new Escuderia("Citroen", new ComparadorPuntosDesc(), new ComparadorCombustibleDesc());
+            Escuderia Citroen = new Escuderia("Citroen", new ComparadorPuntosAsc(), new ComparadorCombustibleAsc());
             
-            Escuderia Peugeot = new Escuderia("Peugeot", new ComparadorPuntosAsc(), new ComparadorCombustibleAsc());
+            Escuderia Peugeot = new Escuderia("Peugeot", new ComparadorPuntosDesc(), new ComparadorCombustibleDesc());
             
-            Escuderia Seat = new Escuderia("Seat", new ComparadorPuntosAsc(), new ComparadorCombustibleAsc());
+            Escuderia Seat = new Escuderia("Seat", new ComparadorPuntosDesc(), new ComparadorCombustibleDesc());
             
             
             org.nuevaEscudería(Seat);

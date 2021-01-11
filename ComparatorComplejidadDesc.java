@@ -9,6 +9,10 @@ import java.util.Comparator;
             int i =0;
             if (c1.getComplejidadActual() > c2.getComplejidadActual()) i = 1;
             if (c1.getComplejidadActual() < c2.getComplejidadActual()) i = -1;
+            else {
+             if (c1.getNombre().compareTo(c2.getNombre()) < 0) i = -1;
+                   else if (c1.getNombre().compareTo(c2.getNombre()) > 0) i = 1;
+               }
             return i;
         }
         

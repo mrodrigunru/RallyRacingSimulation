@@ -28,7 +28,15 @@ public class Escuderia
        coches = new ArrayList<Coche>();
        this.mgc = mgc;
     }
-
+    
+    public MegaComparadorPilotos getMgp(){
+        return this.mgp;
+    }
+    
+    public MegaComparadorCoches getMgc(){
+        return this.mgc;
+    }
+    
     /**
      * Metodo que devuelve un ArrayList con los pilotos de la escuderia
      * 
@@ -45,7 +53,7 @@ public class Escuderia
         
     }
     
-    public void ordenarPilotos(){
+    public void ordenarPilotos(MegaComparadorPilotos mgp){
         Collections.sort(pilotos,mgp);
     }
     
@@ -88,7 +96,7 @@ public class Escuderia
         coches.add(coche);
     }
     
-    public void ordenarCoches(){
+    public void ordenarCoches(MegaComparadorCoches mgc){
         Collections.sort(coches,mgc);
     }
     
@@ -145,34 +153,33 @@ public class Escuderia
     
     public void asignarCoches() throws IOException{
         Iterator<Piloto> itp = pilotos.iterator();
-        Iterator<Coche> itc = coches.iterator();
+        int c = 0;
         
-        Piloto pa = null;
-        Coche ca = null;
-        while(itp.hasNext() && itc.hasNext()){
+        Piloto pa;
+        while(itp.hasNext() && c<coches.size()){
          pa = itp.next();
-         ca = itc.next();
+         Coche ca = coches.get(c);
          
          if (!pa.getDescalificado()){
                 if(ca.getCombustibleActual() > 0){
                     pa.setCoche(ca);
+                    
                 }
-                else print("el piloto "+ pa.getNombre() +" no puede ser enviado a esta carrera por no tener un coche disponible");
+                
+                c++;
             }
             
             
         }
     }
     
+  
     public String toString(){
         return "%%%"+getNombre()+"%%%";
     }
     
     public void mostrarCadaEscuderia() throws IOException{
         String chain;
-        
-        chain = toString();
-        print(chain);   
         
         ArrayList<Piloto> pilotos=getPilotos();
         for(Piloto piloto : pilotos)

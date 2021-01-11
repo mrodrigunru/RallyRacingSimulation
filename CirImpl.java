@@ -110,7 +110,7 @@ public class CirImpl implements Circuito
     public String toString(){
         return "<circuito: " + getNombre() +"> <cond: " + getCondiciones() +
         "> <comp:" + getComplejidadOriginal() + "(original:" + getValorComplejidadOriginal() + ")(actual: " +
-        getComplejidadActual() + ")> <dist: distancia(original:" + getValorDistanciaOriginal() + ")(actual: " +
+        getComplejidadActual() + ")> <dist: " +getDistanciaOriginal() + "(original:" + getValorDistanciaOriginal() + ")(actual: " +
         getDistanciaActual() + ")>";
     }
     

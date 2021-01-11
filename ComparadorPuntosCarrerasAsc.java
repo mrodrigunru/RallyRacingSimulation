@@ -18,7 +18,7 @@ public class ComparadorPuntosCarrerasAsc  extends MegaComparadorPilotos
     public int compare(Piloto p1, Piloto p2)
     {
         if (p1.getPuntosAcumulados() == p2.getPuntosAcumulados())
-        return new ComparadorDestrezaAsc().compare(p1,p2);
+        return new ComparadorCarrerasTerminadasAsc().compare(p1,p2);
         else if (p1.getPuntosAcumulados() > p2.getPuntosAcumulados())
         return 1;
         else return -1;

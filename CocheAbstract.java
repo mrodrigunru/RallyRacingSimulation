@@ -10,6 +10,7 @@ public abstract class CocheAbstract implements Coche
     private Combustible combustible;
     private double combustibleActual;
     private String nombre;
+    private double velocidadReal;
     
 
     /**
@@ -34,7 +35,16 @@ public abstract class CocheAbstract implements Coche
         
         vr = vt * destreza;
         vr = vr / cc;
+        this.velocidadReal = vr;
         return vr;
+    }
+    
+    public double getVelReal(){
+        return velocidadReal;
+    }
+    
+    public void setVelReal(double vel){
+        this.velocidadReal = vel;
     }
     
     
@@ -48,9 +58,9 @@ public abstract class CocheAbstract implements Coche
     }
     
     
-    public double combustibleRestante(Combustible combustible, double tiempoEnTerminar) throws IOException{
+    public double combustibleRestante(double combustible, double tiempoEnTerminar) throws IOException{
         double cr = 0.0;
-        double comb = combustible.getValor();
+        double comb = combustible;
         
         cr = comb - tiempoEnTerminar;
         this.combustibleActual = cr;
@@ -86,7 +96,7 @@ public abstract class CocheAbstract implements Coche
     }
     
     public double getCombustibleActual(){
-        return combustibleActual;
+        return this.combustibleActual;
     }
     
     public void setCombustible(Combustible combustible){
@@ -96,6 +106,21 @@ public abstract class CocheAbstract implements Coche
     
     public void setCombustibleActual(double combustible){
         this.combustibleActual = combustible;
+    }
+    
+            /**
+     * @param number the number which precision we want to correct
+     * @param digits the number of decimals we want number to have
+     * 
+     * @return the number with his presision corrected
+     */
+    
+      public  double decimals(double number, int digits) {
+        double result;
+        result = number * Math.pow(10, digits);
+        result = Math.round(result);
+        result = result/Math.pow(10, digits);
+        return result;
     }
     
         /**

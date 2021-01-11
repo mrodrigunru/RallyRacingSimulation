@@ -232,17 +232,17 @@ public abstract class Piloto
     public abstract double calcularDestreza();
     
     public void conducir(Coche coche, Circuito circuito) throws IOException{
-        double tet = coche.tiempoEnTerminar(circuito.getDistanciaActual(), coche.velocidadReal(calcularDestreza(), circuito.getComplejidadActual()));
+        double vr =  coche.getVelReal();
+        double tet = coche.tiempoEnTerminar(circuito.getDistanciaActual(),vr);
         double conc = getValorConcentracion();
-        double comb = coche.combustibleRestante(coche.getCombustible(), tet);
+        double comb = coche.combustibleRestante(coche.getCombustibleActual(), tet);
         
         if (tet < conc && tet < comb){
            crearEntradaResultados(circuito.getNombre(), tet, 0.0 );
-           comb = comb - tet;
            coche.setCombustibleActual(comb);
            
-           print("+++ nombrePiloto termina la carrera en"+ getTiempoEnCircuito(circuito.getNombre()) +" minutos +++");
-           print("+++ El combustible del nombreCoche tras la carrera es"+ coche.getCombustibleActual() +"+++");
+           print("+++ "+ getNombre()+" termina la carrera en"+ decimals(getTiempoEnCircuito(circuito.getNombre()),2) +" minutos +++");
+           print("+++ El combustible del "+ coche.getNombre()+" tras la carrera es "+ decimals(comb,2) +"+++");
            
            sumarUnaParticipacionEnCarreras();
            sumarUnaCarrerasTerminadas();
@@ -255,29 +255,28 @@ public abstract class Piloto
            coche.setCombustibleActual(comb);
            sumarUnaCarrerasAbandonadas();
            
-         print("¡¡¡ nombrePiloto perdió la concentración a falta de"+
-          -getTiempoEnCircuito(circuito.getNombre()) +"minutos para terminar !!!");
+         print("¡¡¡ "+ getNombre()+" perdió la concentración a falta de "+
+          decimals(-getTiempoEnCircuito(circuito.getNombre()),2) +"minutos para terminar !!!");
          print("¡¡¡ En el momento del despiste llevaba en carrera"+ getValorConcentracion()+ " minutos !!!");
+         print("+++ El combustible del "+ coche.getNombre()+" tras la carrera es "+ decimals(coche.getCombustibleActual(),2) +"+++");
          
-         setDescalificado(true);
          
          print("@@@");
          print("@@@");
               }
             else if(tet > comb){
-                comb = comb - tet;
-                crearEntradaResultados(circuito.getNombre(), comb, 0.0 );
                 
-                coche.setCombustibleActual(comb);
+                crearEntradaResultados(circuito.getNombre(), coche.getCombustibleActual(), 0.0 );
+                
                 sumarUnaCarrerasAbandonadas();
                 
                 
-             print("¡¡¡ El nombreCoche se quedó sin combustible a falta de" +
-             -getTiempoEnCircuito(circuito.getNombre()) + "minutos para terminar !!!");
-             print("¡¡¡ En el momento de quedarse sin combustible llevaba en carrera "+coche.getCombustibleActual()+  " minutos !!!");
+             print("¡¡¡ El "+ coche.getNombre()+" se quedó sin combustible a falta de" +
+             decimals(-coche.getCombustibleActual(),2) + "minutos para terminar !!!");
+             print("¡¡¡ En el momento de quedarse sin combustible llevaba en carrera "+ decimals(comb,2) +  " minutos !!!");
+             print("+++ El combustible del "+ coche.getNombre()+" tras la carrera es "+ decimals(coche.getCombustibleActual(),2) +"+++");
              
-              coche.setCombustibleActual(comb);
-              setDescalificado(true);
+             coche.setCombustibleActual(0.0);
              
              print("@@@");
              print("@@@");
@@ -296,12 +295,28 @@ public abstract class Piloto
         System.out.println(chain);
 
     } 
+    
+        /**
+     * @param number the number which precision we want to correct
+     * @param digits the number of decimals we want number to have
+     * 
+     * @return the number with his presision corrected
+     */
+    
+      public  double decimals(double number, int digits) {
+        double result;
+        result = number * Math.pow(10, digits);
+        result = Math.round(result);
+        result = result/Math.pow(10, digits);
+        return result;
+    }
+    
    public String getTipoPiloto(){
      return "";  
     }
    
    public String toString(){
-       return "<piloto: " + getNombre() + "> <tipo:"+ getTipoPiloto() + "> <dest:" + calcularDestreza() + "> <conc: " +
+       return "<piloto: " + getNombre() + "> <tipo:"+ getTipoPiloto() + "> <dest:" + decimals(calcularDestreza(),2) + "> <conc: " +
        getConcentracion() + "(" +getValorConcentracion()+ ")> <descalificado: " + getDescalificado();
     }
 }

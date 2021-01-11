@@ -20,7 +20,7 @@ public class Gravilla extends CircuitoDecorator
     
     @Override
     public String getCondiciones(){
-        return getDecoratedCircuito().getCondiciones() + getClass().getName();
+        return getDecoratedCircuito().getCondiciones() + getClass().getSimpleName();
     }
 
 

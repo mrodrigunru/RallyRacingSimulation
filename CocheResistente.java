@@ -28,9 +28,9 @@ public class CocheResistente extends CocheAbstract
     
     
     @Override
-    public double combustibleRestante(Combustible combustible, double tiempoEnTerminar) throws IOException{
+    public double combustibleRestante(double combustible, double tiempoEnTerminar) throws IOException{
        double cr = 0.0;
-       double comb = combustible.getValor();
+       double comb = combustible;
        double reserva = getReserva();
        
        if (reserva != 0 && tiempoEnTerminar > comb){

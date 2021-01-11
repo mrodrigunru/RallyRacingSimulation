@@ -29,8 +29,4 @@ public enum Combustible
     }
     
     
-    @Override
-    public String toString(){
-        return getNombre() + "(Valor Original: "+ getValor() +")";
-    }
 }

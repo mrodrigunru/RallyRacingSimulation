@@ -19,7 +19,7 @@ public class RallyDemo
         DatosCampeonatoCompleto initdata = new DatosCampeonatoCompleto();
         //DatosCampeonatoFinPrematuro initdata = new DatosCampeonatoFinPrematuro();
         //DatosCampeonatoPremioDesierto initdata = new DatosCampeonatoPremioDesierto();        
-        
+         
          org.competir();
          org.entregaPremios();
     }

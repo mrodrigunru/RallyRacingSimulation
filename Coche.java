@@ -18,6 +18,12 @@ public interface Coche
      */
     public double velocidadReal( double destreza, double complejidad) throws IOException;
     
+    public double getVelReal();
+    
+    public void setVelReal(double vel);
+    
+    
+    
     /**
      * Calcula el tiempo en terminar de los coches en el circuito
      * 
@@ -34,7 +40,7 @@ public interface Coche
      *          double tiempoEnTerminar: tiempo que tarda un coche en completar el circuito
      * @return        double combustibleRestante: el combustible restante del coche
      */
-    public double combustibleRestante(Combustible combustible, double tiempoEnTerminar) throws IOException;
+    public double combustibleRestante(double combustible, double tiempoEnTerminar) throws IOException;
     
     /**
      * Metodo que devuelve el nombre del coche
