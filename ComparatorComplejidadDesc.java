@@ -7,11 +7,11 @@ import java.util.Comparator;
 
         public int compare (Circuito c1, Circuito c2){
             int i =0;
-            if (c1.getComplejidadActual() > c2.getComplejidadActual()) i = 1;
-            if (c1.getComplejidadActual() < c2.getComplejidadActual()) i = -1;
+            if (c1.getComplejidadActual() > c2.getComplejidadActual()) i = -1;
+            else if (c1.getComplejidadActual() < c2.getComplejidadActual()) i = 1;
             else {
-             if (c1.getNombre().compareTo(c2.getNombre()) < 0) i = -1;
-                   else if (c1.getNombre().compareTo(c2.getNombre()) > 0) i = 1;
+             return (c2.getNombre().compareTo(c1.getNombre())) ;
+                 
                }
             return i;
         }

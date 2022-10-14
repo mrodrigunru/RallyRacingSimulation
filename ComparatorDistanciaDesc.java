@@ -1,7 +1,7 @@
 import java.util.Comparator;
 
     /**
-     * A comparator of Circuitos por complejidad de forma descendente
+     * A comparator of Circuitos por Distancia Actual de forma descendente
      */
     public class ComparatorDistanciaDesc extends MegaComparadorCircuitos
     {
@@ -11,8 +11,8 @@ import java.util.Comparator;
             if (c1.getDistanciaActual() > c2.getDistanciaActual()) i = -1;
             if (c1.getDistanciaActual() < c2.getDistanciaActual()) i = 1;
             else {
-             if (c1.getNombre().compareTo(c2.getNombre()) < 0) i = 1;
-                   else if (c1.getNombre().compareTo(c2.getNombre()) > 0) i = -1;
+             return (c2.getNombre().compareTo(c1.getNombre())) ;
+                  
                }
             return i;
         }

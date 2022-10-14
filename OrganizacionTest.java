@@ -37,7 +37,7 @@ public class OrganizacionTest
     @Before
     public void setUp()
     {
-        Organizacion organizacion = Organizacion.getInstance();
+        Organizacion organizacion = Organizacion.getInstance(new ComparatorDistanciaDesc());
         mgp = new ComparadorPuntosAsc();
         mgc = new ComparadorCombustibleAsc();
         escuderia = new Escuderia("ESCUDERIA", mgp, mgc);
@@ -48,7 +48,7 @@ public class OrganizacionTest
     @Test
     public void testSetAndGetLimiteAbandonos()
     {
-        Organizacion organizacion = Organizacion.getInstance();
+        Organizacion organizacion = Organizacion.getInstance(new ComparatorDistanciaDesc());
         organizacion.setLimiteAbandonos(25);
         assertEquals(25, organizacion.getLimiteAbandonos(),0);
     }
@@ -56,7 +56,7 @@ public class OrganizacionTest
     @Test
     public void testSetAndGetLimitePilotos()
     {
-        Organizacion organizacion = Organizacion.getInstance();
+        Organizacion organizacion = Organizacion.getInstance(new ComparatorDistanciaDesc());
         organizacion.setLimitePilotos(25);
         assertEquals(25, organizacion.getLimitePilotos(),0);
     }
@@ -64,7 +64,7 @@ public class OrganizacionTest
     @Test
     public void testNuevoAndGetCircuitos()
     {
-        Organizacion organizacion = Organizacion.getInstance();
+        Organizacion organizacion = Organizacion.getInstance(new ComparatorDistanciaDesc());
         organizacion.nuevoCircuito(circuito);
         assertEquals(circuito, organizacion.getCircuitos().first());
     }
@@ -72,7 +72,7 @@ public class OrganizacionTest
     @Test
     public void testNuevoAndGetEscuderias()
     {
-        Organizacion organizacion = Organizacion.getInstance();
+        Organizacion organizacion = Organizacion.getInstance(new ComparatorDistanciaDesc());
         organizacion.nuevaEscudería(escuderia);
         assertEquals(escuderia, organizacion.getEscuderias().get(escuderia.getNombre()));
     }
@@ -80,7 +80,7 @@ public class OrganizacionTest
     @Test
     public void testNuevoAndGetPilotoCarrera()
     {
-        Organizacion organizacion = Organizacion.getInstance();
+        Organizacion organizacion = Organizacion.getInstance(new ComparatorDistanciaDesc());
         organizacion.nuevoPilotoCarrera(piloto);
         assertEquals(piloto, organizacion.getPilotosCarrera().get(0));
     }

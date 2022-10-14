@@ -1,6 +1,6 @@
 import java.util.Comparator;
 /**
- * Clase abstracta para acceder a los comparadores de pilotos
+ * Clase abstracta para acceder a los comparadores de circuitos
  * 
  * @author Manuel Rodriguez
  * @version 1.0

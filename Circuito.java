@@ -25,6 +25,9 @@ public interface Circuito
      */
     public Complejidad getComplejidadOriginal();
     
+    /**
+     * Metodo que devuelve el valor de la complejidad actual 
+     */
     public double getComplejidadActual();
     
     /**
@@ -43,6 +46,9 @@ public interface Circuito
      */
     public Distancia getDistanciaOriginal();
     
+    /**
+     * Metodo que devuelve el valor de la distancia actual
+     */
     public double getDistanciaActual();
     
     /**
@@ -69,6 +75,9 @@ public interface Circuito
      */
     public void setComplejidadOriginal(Complejidad compNew);
     
+    /**
+     * Metodo que actualiza el valor de la complejidad actual
+     */
     public void setComplejidadActual(double compAc);
     
     /**
@@ -79,6 +88,9 @@ public interface Circuito
      */
     public void setDistanciaOriginal(Distancia disNew);
     
+    /**
+     * Metodo que actualiza el valor de la distancia actual
+     */
     public void setDistanciaActual(double disAc);
     
     /**
@@ -90,7 +102,13 @@ public interface Circuito
     
     public abstract double decimals(double number, int digits);
     
+    /**
+     * Metodo que devuelve las condiciones del circuito
+     */
     public String getCondiciones();
     
+    /**
+     * Metodo que imprime las caracteristicas de la clase
+     */
     public String toString();
 }

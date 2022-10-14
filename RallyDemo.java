@@ -2,8 +2,8 @@ import java.io.*;
 /**
  * Write a description of class RallyDemo here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Manuel Rodriguez
+ * @version 2.0
  */
 public class RallyDemo
 {
@@ -13,11 +13,15 @@ public class RallyDemo
      */
     public static void main(String[] args) throws IOException
     {
-        Organizacion org = Organizacion.getInstance();
         
         
+        Organizacion org = Organizacion.getInstance(new ComparatorDistanciaDesc());
         DatosCampeonatoCompleto initdata = new DatosCampeonatoCompleto();
+        
+        //Organizacion org = Organizacion.getInstance(new ComparatorComplejidadDesc());
         //DatosCampeonatoFinPrematuro initdata = new DatosCampeonatoFinPrematuro();
+        
+        //Organizacion org = Organizacion.getInstance(new ComparatorDistanciaDesc());
         //DatosCampeonatoPremioDesierto initdata = new DatosCampeonatoPremioDesierto();        
          
          org.competir();

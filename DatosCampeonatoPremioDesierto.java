@@ -9,7 +9,7 @@ public class DatosCampeonatoPremioDesierto
 {
     
     /**
-     * Constructor for objects of class DatosCampeonatoFinPrematuro
+     * Constructor for objects of class datos del premio desierto
      */
     public DatosCampeonatoPremioDesierto() throws IOException
     {
@@ -29,7 +29,7 @@ public class DatosCampeonatoPremioDesierto
      * @return (nothing)
      */
     private void initData3() throws IOException{
-            Organizacion org = Organizacion.getInstance();
+            Organizacion org = Organizacion.getInstance(new ComparatorDistanciaDesc());
             
             org.setLimiteAbandonos(1);
             org.setLimitePilotos(3);
@@ -58,8 +58,8 @@ public class DatosCampeonatoPremioDesierto
             
             
             Circuito Corcega = new CirImpl ("Corcega", Complejidad.MEDIA, Distancia.INTERMEDIA);
-            Circuito corG = new Gravilla ("corG", Complejidad.MEDIA, Distancia.INTERMEDIA, Corcega);
             Circuito corN = new Nocturno ("corN", Complejidad.MEDIA, Distancia.INTERMEDIA, Corcega);
+            Circuito corG = new Gravilla ("corG", Complejidad.MEDIA, Distancia.INTERMEDIA, Corcega);
             org.nuevoCircuito(Corcega);
             
             Circuito Cerdena = new CirImpl ("Cerdeña", Complejidad.ALTA, Distancia.CORTA);
@@ -99,8 +99,8 @@ public class DatosCampeonatoPremioDesierto
             Citroen.nuevoPiloto(new PilotoExperimentado("Loeb", Concentracion.NORMAL));
             Citroen.nuevoPiloto(new PilotoEstrella("Makinen", Concentracion.ZEN));
             Citroen.nuevoPiloto(new PilotoNovato("Auriol", Concentracion.NORMAL));
-            Citroen.ordenarPilotos(new ComparadorPuntosDesc());
-            Citroen.ordenarCoches(new ComparadorCombustibleDesc());
+            Citroen.ordenarPilotos(Citroen.getMgp());
+            Citroen.ordenarCoches(Citroen.getMgc());
             Citroen.asignarCoches();
             
             Seat.nuevoCoche(new CocheResistente("Seat Tarraco", Velocidad.TORTUGA, Combustible.GENEROSO));
@@ -110,8 +110,8 @@ public class DatosCampeonatoPremioDesierto
             Seat.nuevoPiloto(new PilotoExperimentado("Ogier", Concentracion.NORMAL));
             Seat.nuevoPiloto(new PilotoEstrella("McRae", Concentracion.CONCENTRADO));
             Seat.nuevoPiloto(new PilotoNovato("Blomquist", Concentracion.DESPISTADO));
-            Seat.ordenarPilotos(new ComparadorPuntosAsc());
-            Seat.ordenarCoches(new ComparadorCombustibleAsc());
+            Seat.ordenarPilotos(Seat.getMgp());
+            Seat.ordenarCoches(Seat.getMgc());
             Seat.asignarCoches();
             
             
@@ -122,8 +122,8 @@ public class DatosCampeonatoPremioDesierto
             Peugeot.nuevoPiloto(new PilotoExperimentado("Kakunnen", Concentracion.CONCENTRADO));
             Peugeot.nuevoPiloto(new PilotoEstrella("Sainz", Concentracion.ZEN));
             Peugeot.nuevoPiloto(new PilotoNovato("Sordo", Concentracion.DESPISTADO));
-            Peugeot.ordenarPilotos(new ComparadorPuntosAsc());
-            Peugeot.ordenarCoches(new ComparadorCombustibleAsc());
+            Peugeot.ordenarPilotos(Peugeot.getMgp());
+            Peugeot.ordenarCoches(Peugeot.getMgc());
             Peugeot.asignarCoches();
             
             

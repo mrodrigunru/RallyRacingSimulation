@@ -13,15 +13,24 @@ public enum Distancia
     private final String nombre;
     private final double value;
     
+    /**
+     * Constructor de la clase enum de distancia
+     */
     Distancia(String nombre, double value){
         this.nombre=nombre;
         this.value=value;
     }
     
+    /**
+     * Metodo que devuelve el nombre del enum
+     */
     public String getNombre(){
         return nombre;
     }
-    
+
+    /**
+     * Metodo que devuelve el valor del enum
+     */
     public double getValor(){
         return value;  
     }

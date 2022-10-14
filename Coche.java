@@ -18,11 +18,31 @@ public interface Coche
      */
     public double velocidadReal( double destreza, double complejidad) throws IOException;
     
+    /**
+     * Devuelve la velocidad real del coche
+     * 
+     * @return double velocidadReal : la valocidad real del coche
+     */
     public double getVelReal();
     
+    /**
+     * Actualiza la velocidad real del coche
+     * 
+     * @param double vel: el nuevo valor de la velocidad real 
+     * 
+     */
     public void setVelReal(double vel);
     
+    /**
+     * Metodo que actualiza cuando un coche se queda sin combustible
+     * 
+     */
+    public void setNoFuel();
     
+    /**
+     * Metodo que devuelve si el coche se ha quedado sin combustible
+     */
+    public boolean getNoFuel();
     
     /**
      * Calcula el tiempo en terminar de los coches en el circuito
@@ -83,7 +103,7 @@ public interface Coche
     public void setVelocidad(Velocidad velocidad);
     
     /**
-     * Metodo que devuelve el combustible original del coche
+     * Metodo que devuelve la etiqueta del combustible original del coche
      * 
      * @param   (nada)     
      * @return  combustible original del coche
@@ -122,8 +142,33 @@ public interface Coche
      */
     public void setCombustibleActual(double combustible);
     
+    /**
+     * @param number the number which precision we want to correct
+     * @param digits the number of decimals we want number to have
+     * 
+     * @return the number with his presision corrected
+     */
+    
+    public  double decimals(double number, int digits);
+    
+    /**
+     *
+     * It prints a chain both in logFile and console
+     * 
+     * @throws IOException if there is an error in Input/Output operations
+     */
+    public void print (String chain) throws IOException;
+    
+    /**
+     * Metodo que devuelve el tipo de coche 
+     * 
+     * @return String tipo: tipo de coche
+     */
     public String getTipo();
     
+    /**
+     * Método que imprime las caracteristicas del Coche
+     */
     public String toString();
     
 }

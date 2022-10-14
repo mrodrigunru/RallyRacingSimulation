@@ -15,15 +15,36 @@ public enum Combustible
     private final String nombre;
     private final double value;
     
+    /**
+     * Constructor de la clase Enum combustible
+     * 
+     * @param String nombre : etiqueta del enumerado
+     * @param double value : valor del enumerado
+     * 
+     * @return (none)
+     */
     Combustible(String nombre, double value){
         this.nombre=nombre;
         this.value=value;
     }
     
+    /**
+     * Metodo getter de la etiqueta del enumerado
+     * @param (none)
+     * 
+     * @return String nombre : el nombre del enumerado
+     */
     public String getNombre(){
         return nombre;
     }
     
+    /**
+     * Metodo getter del valor del enumerado
+     * 
+     * @param (none)
+     * 
+     * @return double value : el valor del enumerado
+     */
     public double getValor(){
         return value;  
     }

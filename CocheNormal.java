@@ -17,10 +17,18 @@ public class CocheNormal extends CocheAbstract
         super(nombre,velocidad,combustible);
     }
 
+    /**
+     * Metodo que devuelve el tipo de coche 
+     * 
+     * @return String tipo: tipo de coche
+     */
     public String getTipo(){
         return getClass().getName();
     }
     
+    /**
+     * Método que imprime las caracteristicas del Coche
+     */
     @Override
     public String toString(){
         return "<coche:" +getNombre() + "> <tipo:" + getTipo() + "> <vel_teó:" +  getVelocidad() +

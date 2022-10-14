@@ -26,17 +26,17 @@ public class PilotoEstrella extends Piloto
      */
      public double calcularDestreza()
     {
-        double dest = 0.0;
-        double conc = super.getConcentracion().getValor();
-        dest = conc + 6;
-        dest = dest / 140;
-        dest = dest * 1.06;
-        dest = dest + 0.05;
         
+        double conc = super.getConcentracion().getValor();
+        double dest = (((conc + 6)/140)*1.06)+0.05;
+        dest = Math.round((dest)*100d) / 100d;
         return dest;
         
     }
     
+    /**
+     * Metodo que devuelve las caracterisitcas del piloto
+     */
     public String getTipoPiloto(){
      return getClass().getName();  
     }

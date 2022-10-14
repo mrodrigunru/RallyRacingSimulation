@@ -13,15 +13,12 @@ public class Gravilla extends CircuitoDecorator
     public Gravilla(String nombre, Complejidad comp, Distancia dis, Circuito circuito)
     {
         super(nombre, comp, dis, circuito);
-        setComplejidadActual(decimals(1.05 * getComplejidadActual(), 2));
-        setDistanciaActual(decimals(0.95 * getDistanciaActual(), 2));
-    
+     
+        setComplejidadActual(Math.round((1.05 * getComplejidadActual())*100d) / 100d);
+        
+        setDistanciaActual(Math.round((0.95 * getDistanciaActual())*100d) / 100d);
     }
     
-    @Override
-    public String getCondiciones(){
-        return getDecoratedCircuito().getCondiciones() + getClass().getSimpleName();
-    }
-
+    
 
 }

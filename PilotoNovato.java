@@ -25,16 +25,17 @@ public class PilotoNovato extends Piloto
      */
      public double calcularDestreza()
     {
-        double dest = 0.0;
-        double conc = super.getConcentracion().getValor();
-        dest = conc * 0.97;
-        dest = dest / 120;
-        dest = dest - 0.03;
         
+        double conc = super.getConcentracion().getValor();
+        double dest = ((conc * 0.97)/120)-0.03;
+        dest = Math.round((dest)*100d) / 100d;
         return dest;
         
     }
     
+    /**
+     * Metodo que devuelve las caracterisitcas del piloto
+     */
     public String getTipoPiloto(){
      return getClass().getName();  
     }

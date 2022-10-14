@@ -21,29 +21,6 @@ public abstract class Piloto
     
     //string es el nombre del circuito y resultados es la subclase
     private HashMap<String, Resultados> resultados;
-    /**
-     * Clase que recoge los resultados de un piloto en un circuito
-     */
-    public class Resultados {
-        double tiempo;
-        double puntos;   
-        
-        public double getTiempo(){
-        return tiempo;
-        }
-        
-        public double getPuntos(){
-        return puntos;
-        }
-        
-        public void setTiempo(double tiempo){
-        this.tiempo = tiempo;
-        }
-        
-        public void setPuntos(double puntos){
-        this.puntos = puntos;
-        }
-    }
     
     
     /**
@@ -137,12 +114,26 @@ public abstract class Piloto
         this.coche = coche;
     }
     
+    /**
+     * Metodo que devuelve el tiempo de un piloto en un circuito
+     * 
+     * @param nomCircuito el nombre del circuito
+     * 
+     * @return tiempo en ese circuito
+     */
     public double getTiempoEnCircuito(String nomCircuito){
         Resultados res = resultados.get(nomCircuito);
         return res.getTiempo();
         
     }
     
+    /**
+     * Metodo que crea una entrada de la calse resultados con los parametros dados
+     * 
+     * @param nomCircuito nombre del circuito
+     * @param tiempo tiempo en ese circuito
+     * @param puntos puntos conseguidos en ese circuito
+     */
     public void crearEntradaResultados(String nomCircuito, double tiempo, double puntos){
         Resultados res = new Resultados();
         res.setTiempo(tiempo);
@@ -151,60 +142,139 @@ public abstract class Piloto
         resultados.put(nomCircuito, res);
     }
     
+    /**
+     * Metodo que actualiza el tiempo en un circuito 
+     * 
+     * @param nomCircuito el nombre del circuito
+     * @param tiempo el tiempo en dicho circuito
+     */
     public void setTiempoEnCircuito (String nomCircuito, double tiempo){
         Resultados res = resultados.get(nomCircuito);
         
         res.setTiempo(tiempo);
     }
     
+    /**
+     * Metodo que actualiza los puntos en un circuito
+     * 
+     * @param nomCircuito nombre del circuito
+     * @param puntos puntos en dicho circuito
+     */
     public void setPuntosEnCircuito (String nomCircuito, double puntos){
         Resultados res = resultados.get(nomCircuito);
         
         res.setPuntos(puntos);
     }
     
+    /**
+     * Metodo que devuelve los puntos en un circuito
+     * 
+     * @param nomCircuito nombre del circuito
+     * @return puntos puntos en dicho circuito
+     */
     public double getPuntosEnCircuito(String nomCircuito){
+
         Resultados res = resultados.get(nomCircuito);
         return res.getPuntos();
         
     }
     
+    /** 
+     * Metodo que anula los puntos conseguidos a un piloto
+     */
+    public void anularPuntos(){
+        this.puntosAcumulados = 0;
+    }
+    
+    /**
+     * Metodo que devuelve el total de puntos de un piloto
+     * 
+     * @return total de puntos acumulados
+     */
     public int getPuntosAcumulados(){
         return puntosAcumulados;
     }
     
+    /**
+     * Metodo que actualiza los puntos acumulados
+     * 
+     * @paran puntos puntos a sumar
+     */
     public void sumarPuntosAcumulados(int puntos){
         this.puntosAcumulados = this.puntosAcumulados + puntos;
     }
     
+    /**
+     * Metodo que devuelve la paritipacion en las carreras
+     * 
+     * @return total de participaciones
+     */
     public int getParticipacionEnCarreras(){
         return participacionEnCarreras;
     }
     
+    /**
+     * Metodo que suma una participacion
+     */
     public void sumarUnaParticipacionEnCarreras(){
         this.participacionEnCarreras++;
     }
     
+    /**
+     * Metodo que devuelve el total de carreras terminads
+     * 
+     * @return total de terminads
+     */
     public int getCarrerasTerminadas(){
         return carrerasTerminadas;
     }
     
+    /**
+     * Metodo que suma una carrera terminada
+     */
     public void sumarUnaCarrerasTerminadas(){
         this.carrerasTerminadas++;
     }
     
+    /**
+     * Metodo que devuelve el total de abandonos
+     * 
+     * @return total de abandonos
+     */
     public int getCarrerasAbandonadas(){
         return carrerasAbandonadas;
     }
     
+    /**
+     * Metodo que suma un abandono
+     */
     public void sumarUnaCarrerasAbandonadas(){
         this.carrerasAbandonadas++;
     } 
     
+    /**
+     * Metodo que devuelve si un piloto esta descalificado
+     * 
+     * @return T o F si esta descalificado
+     */
     public boolean getDescalificado(){
         return descalificado;
     }
     
+    /**
+     * Metodo que devuelve un map con los resultados en los circuitos
+     * 
+     * @returm map de los resultados
+     */
+    public HashMap<String, Resultados> getMapResultados(){
+        return resultados;
+    }
+    
+    /**
+     * Metodo que asigna la condicion de descalificado a unj piloto
+     * 
+     * @param descalificado T o F si esta o no descalificado
+     */
     public void setDescalificado(boolean descalificado){
         this.descalificado = descalificado;
     }
@@ -229,54 +299,70 @@ public abstract class Piloto
         this.destreza = destreza;
     }
     
+    /**
+     * Metodo que calcula la destreza de un piloto
+     */
     public abstract double calcularDestreza();
     
+    /**
+     * Metodo que conduce el coche
+     * 
+     * @param coche coche asignado
+     * @param circuito ciruito asignado
+     * 
+     * @throws IOException
+     */
     public void conducir(Coche coche, Circuito circuito) throws IOException{
         double vr =  coche.getVelReal();
         double tet = coche.tiempoEnTerminar(circuito.getDistanciaActual(),vr);
         double conc = getValorConcentracion();
         double comb = coche.combustibleRestante(coche.getCombustibleActual(), tet);
         
-        if (tet < conc && tet < comb){
+        if (tet < conc && comb>0){      //tet < conc && tet < comb
            crearEntradaResultados(circuito.getNombre(), tet, 0.0 );
            coche.setCombustibleActual(comb);
            
-           print("+++ "+ getNombre()+" termina la carrera en"+ decimals(getTiempoEnCircuito(circuito.getNombre()),2) +" minutos +++");
-           print("+++ El combustible del "+ coche.getNombre()+" tras la carrera es "+ decimals(comb,2) +"+++");
+           print("+++ "+ getNombre()+" termina la carrera en"+ getTiempoEnCircuito(circuito.getNombre()) +" minutos +++");
+           print("+++ El combustible del "+ coche.getNombre()+" tras la carrera es "+ comb +"+++");
            
+           //sumas solo si t > 0
            sumarUnaParticipacionEnCarreras();
+           
            sumarUnaCarrerasTerminadas();
              
         }
-        else if (tet > conc){
+        else if (tet > conc){      
            conc = conc - tet;
            crearEntradaResultados(circuito.getNombre(), conc, 0.0 );
-           comb = comb - conc;
-           coche.setCombustibleActual(comb);
+           double comb2 = coche.combustibleRestante(coche.getCombustibleActual(), getValorConcentracion());
+          
+           coche.setCombustibleActual(comb2);
            sumarUnaCarrerasAbandonadas();
-           
-         print("¡¡¡ "+ getNombre()+" perdió la concentración a falta de "+
-          decimals(-getTiempoEnCircuito(circuito.getNombre()),2) +"minutos para terminar !!!");
+            
+         print("¡¡¡ "+ getNombre()+" perdió la concentración a falta de "+ -Math.round((getTiempoEnCircuito(circuito.getNombre()))*100d) / 100d
+           +"minutos para terminar !!!");
          print("¡¡¡ En el momento del despiste llevaba en carrera"+ getValorConcentracion()+ " minutos !!!");
-         print("+++ El combustible del "+ coche.getNombre()+" tras la carrera es "+ decimals(coche.getCombustibleActual(),2) +"+++");
+         print("+++ El combustible del "+ coche.getNombre()+" tras la carrera es "+ coche.getCombustibleActual() +"+++");
          
          
          print("@@@");
          print("@@@");
               }
-            else if(tet > comb){
+            else if(comb<=0){    //tet > comb
                 
-                crearEntradaResultados(circuito.getNombre(), coche.getCombustibleActual(), 0.0 );
+                crearEntradaResultados(circuito.getNombre(), comb, 0.0 );                        //cambio coche.getCombustibleActual() por comb
+                coche.setCombustibleActual(coche.combustibleRestante(coche.getCombustibleActual(), tet));
                 
                 sumarUnaCarrerasAbandonadas();
                 
                 
              print("¡¡¡ El "+ coche.getNombre()+" se quedó sin combustible a falta de" +
-             decimals(-coche.getCombustibleActual(),2) + "minutos para terminar !!!");
-             print("¡¡¡ En el momento de quedarse sin combustible llevaba en carrera "+ decimals(comb,2) +  " minutos !!!");
-             print("+++ El combustible del "+ coche.getNombre()+" tras la carrera es "+ decimals(coche.getCombustibleActual(),2) +"+++");
+             -coche.getCombustibleActual() + "minutos para terminar !!!");
+             print("¡¡¡ En el momento de quedarse sin combustible llevaba en carrera "+ comb +  " minutos !!!");
+             print("+++ El combustible del "+ coche.getNombre()+" tras la carrera es "+ coche.getCombustibleActual() +"+++");
              
-             coche.setCombustibleActual(0.0);
+             //coche.setCombustibleActual(0);
+             coche.setNoFuel();
              
              print("@@@");
              print("@@@");
@@ -296,7 +382,8 @@ public abstract class Piloto
 
     } 
     
-        /**
+    
+    /**
      * @param number the number which precision we want to correct
      * @param digits the number of decimals we want number to have
      * 
@@ -311,12 +398,18 @@ public abstract class Piloto
         return result;
     }
     
+   /**
+    * Metodo que devuelve las caracteristicas del piloto
+    */
    public String getTipoPiloto(){
      return "";  
     }
    
+    /**
+     * Metodo que imprime las caracteristicas del piloto
+     */
    public String toString(){
-       return "<piloto: " + getNombre() + "> <tipo:"+ getTipoPiloto() + "> <dest:" + decimals(calcularDestreza(),2) + "> <conc: " +
+       return "<piloto: " + getNombre() + "> <tipo:"+ getTipoPiloto() + "> <dest:" + calcularDestreza() + "> <conc: " +
        getConcentracion() + "(" +getValorConcentracion()+ ")> <descalificado: " + getDescalificado();
     }
 }

@@ -31,7 +31,7 @@ public class CirImplTest
     @Before
     public void setUp()
     {
-        circuito = new CirImpl("CIRCUITO", complejidad.BAJA, distancia.CORTA);
+        circuito = new CirImpl("CIRCUITO", complejidad.BAJA, distancia.CORTA );
     }
     
     @Test

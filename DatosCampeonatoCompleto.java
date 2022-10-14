@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.io.*;
 /**
- * Clase para inciar los datos de la simulacion
+ * Clase para inciar los datos de la simulacion del campeonato completo
  * 
  * @author Manuel Rodriguez Rodriguez
  * @version 20/21
@@ -35,7 +35,7 @@ public class DatosCampeonatoCompleto
      * @return (nothing)
      */
     private void initData() throws IOException{
-            Organizacion org = Organizacion.getInstance();
+            Organizacion org = Organizacion.getInstance(new ComparatorDistanciaDesc());
             
             org.setLimiteAbandonos(3);
             org.setLimitePilotos(2);
@@ -64,8 +64,8 @@ public class DatosCampeonatoCompleto
             
             
             Circuito Corcega = new CirImpl ("Corcega", Complejidad.MEDIA, Distancia.INTERMEDIA);
-            Circuito corG = new Gravilla ("corG", Complejidad.MEDIA, Distancia.INTERMEDIA, Corcega);
             Circuito corN = new Nocturno ("corN", Complejidad.MEDIA, Distancia.INTERMEDIA, Corcega);
+            Circuito corG = new Gravilla ("corG", Complejidad.MEDIA, Distancia.INTERMEDIA, Corcega);
             org.nuevoCircuito(Corcega);
             
             Circuito Cerdena = new CirImpl ("Cerdeña", Complejidad.ALTA, Distancia.CORTA);
@@ -98,17 +98,6 @@ public class DatosCampeonatoCompleto
             
             
             //ceracion coches y pilotos
-            Citroen.nuevoCoche(new CocheResistente("citroen c5", Velocidad.RAPIDA, Combustible.ELEFANTE));
-            Citroen.nuevoCoche(new CocheRapido("citroen c4", Velocidad.RAPIDA, Combustible.ESCASO));
-            Citroen.nuevoCoche(new CocheNormal("citroen c3", Velocidad.RAPIDA, Combustible.ESCASO));
-            
-            Citroen.nuevoPiloto(new PilotoExperimentado("Loeb", Concentracion.NORMAL));
-            Citroen.nuevoPiloto(new PilotoEstrella("Makinen", Concentracion.ZEN));
-            Citroen.nuevoPiloto(new PilotoNovato("Auriol", Concentracion.NORMAL));
-            Citroen.ordenarPilotos(new ComparadorPuntosDesc());
-            Citroen.ordenarCoches(new ComparadorCombustibleDesc());
-            Citroen.asignarCoches();
-            
             Seat.nuevoCoche(new CocheResistente("Seat Tarraco", Velocidad.TORTUGA, Combustible.GENEROSO));
             Seat.nuevoCoche(new CocheRapido("Seat Ateca", Velocidad.GUEPARDO, Combustible.GENEROSO));
             Seat.nuevoCoche(new CocheNormal("Seat Arona", Velocidad.RAPIDA, Combustible.ESCASO));
@@ -116,10 +105,9 @@ public class DatosCampeonatoCompleto
             Seat.nuevoPiloto(new PilotoExperimentado("Ogier", Concentracion.NORMAL));
             Seat.nuevoPiloto(new PilotoEstrella("McRae", Concentracion.CONCENTRADO));
             Seat.nuevoPiloto(new PilotoNovato("Blomquist", Concentracion.DESPISTADO));
-            Seat.ordenarPilotos(new ComparadorPuntosAsc());
-            Seat.ordenarCoches(new ComparadorCombustibleAsc());
+            Seat.ordenarPilotos(Seat.getMgp());
+            Seat.ordenarCoches(Seat.getMgc());
             Seat.asignarCoches();
-            
             
             Peugeot.nuevoCoche(new CocheResistente("Peugeot 5008", Velocidad.LENTA, Combustible.GENEROSO));
             Peugeot.nuevoCoche(new CocheRapido("Peugeot 3008", Velocidad.GUEPARDO, Combustible.NORMAL));
@@ -128,9 +116,26 @@ public class DatosCampeonatoCompleto
             Peugeot.nuevoPiloto(new PilotoExperimentado("Kakunnen", Concentracion.CONCENTRADO));
             Peugeot.nuevoPiloto(new PilotoEstrella("Sainz", Concentracion.ZEN));
             Peugeot.nuevoPiloto(new PilotoNovato("Sordo", Concentracion.DESPISTADO));
-            Peugeot.ordenarPilotos(new ComparadorPuntosAsc());
-            Peugeot.ordenarCoches(new ComparadorCombustibleAsc());
+            Peugeot.ordenarPilotos(Peugeot.getMgp());
+            Peugeot.ordenarCoches(Peugeot.getMgc());
             Peugeot.asignarCoches();
+            
+            
+            Citroen.nuevoCoche(new CocheResistente("citroen c5", Velocidad.RAPIDA, Combustible.ELEFANTE));
+            Citroen.nuevoCoche(new CocheRapido("citroen c4", Velocidad.RAPIDA, Combustible.ESCASO));
+            Citroen.nuevoCoche(new CocheNormal("citroen c3", Velocidad.RAPIDA, Combustible.ESCASO));
+            
+            Citroen.nuevoPiloto(new PilotoExperimentado("Loeb", Concentracion.NORMAL));
+            Citroen.nuevoPiloto(new PilotoEstrella("Makinen", Concentracion.ZEN));
+            Citroen.nuevoPiloto(new PilotoNovato("Auriol", Concentracion.NORMAL));
+            Citroen.ordenarPilotos(Citroen.getMgp());
+            Citroen.ordenarCoches(Citroen.getMgc());
+            Citroen.asignarCoches();
+            
+
+            
+            
+            
             
             
     }
