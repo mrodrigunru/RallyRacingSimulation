@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=RallyDemo
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ RallyDemo\ here.\r\n\ \r\n\ @author\ Manuel\ Rodriguez\r\n\ @version\ 2.0\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\r\n\ Sumula\ la\ carrera\ de\ Rally\ entre\ las\ escuderias\ de\ la\ organizacion\r\n
+numComments=2

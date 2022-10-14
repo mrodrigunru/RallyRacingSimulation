@@ -1,0 +1,10 @@
+
+PROJECT TITLE: Rally Championship
+PURPOSE OF PROJECT: Proyecto de la Asignatura Desarrollo de Programas
+VERSION or DATE: 2.0
+AUTHORS: Manuel Rodriguez && Marcos Santos
+
+Para cambiar entres los tres conjuntos de datos proporcionados basta con descomentar el conjunto deseado en la clase RallyDemo
+y comentar los que no son deseados
+
+NOTA DEL AUTOR: EL DECORATOR ESTA IMPLEMENTADO SIGUIENDO EL MODELO DE LAS TRANSPARENCIAS, DE AHI QUE SE REPITA CÓDIGO. 

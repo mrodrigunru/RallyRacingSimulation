@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=MegaComparadorCircuitos
+comment0.text=\r\n\ Clase\ abstracta\ para\ acceder\ a\ los\ comparadores\ de\ circuitos\r\n\ \r\n\ @author\ Manuel\ Rodriguez\r\n\ @version\ 1.0\r\n
+comment1.params=c1\ c2
+comment1.target=int\ compare(Circuito,\ Circuito)
+numComments=2

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=CocheNormal
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ CocheNormal\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=nombre\ velocidad\ combustible
+comment1.target=CocheNormal(java.lang.String,\ Velocidad,\ Combustible)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ CocheNormal\r\n
+comment2.params=
+comment2.target=java.lang.String\ getTipo()
+comment2.text=\r\n\ Metodo\ que\ devuelve\ el\ tipo\ de\ coche\ \r\n\ \r\n\ @return\ String\ tipo\:\ tipo\ de\ coche\r\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment3.text=\r\n\ M\u00E9todo\ que\ imprime\ las\ caracteristicas\ del\ Coche\r\n
+numComments=4

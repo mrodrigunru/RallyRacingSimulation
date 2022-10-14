@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=CocheResistente
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ CocheResistente\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=nombre\ velocidad\ combustible
+comment1.target=CocheResistente(java.lang.String,\ Velocidad,\ Combustible)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ CocheResistente\r\n\ \r\n\ @param\ String\ nombre\:\ nombre\ del\ coche\r\n\ @param\ Velocidad\ velocidad\:\ valor\ de\ la\ velocidad\ teorica\ del\ coche\r\n\ @param\ Combustible\ combustible\:\ valor\ del\ combustible\ inicial\ del\ coche\r\n
+comment2.params=
+comment2.target=double\ getReserva()
+comment2.text=\r\n\ Metodo\ que\ devuelve\ el\ valor\ de\ la\ reserva\ del\ coche\r\n\ \r\n\ @return\ double\ reserva\r\n
+comment3.params=reserva
+comment3.target=void\ setReserva(double)
+comment3.text=\r\n\ Metodo\ que\ actualiza\ el\ valor\ de\ la\ reserva\r\n\ \r\n\ @param\ double\ reserva\ \ nuevo\ valor\ de\ la\ reserva\r\n
+comment4.params=combustible\ tiempoEnTerminar
+comment4.target=double\ combustibleRestante(double,\ double)
+comment4.text=\r\n\ Metodo\ que\ calcula\ el\ combustible\ restante\ el\ coche\r\n\ \r\n\ @param\ double\ combustible\ combustible\ actual\ del\ coche\r\n\ @param\ double\ tiempo\ en\ terminar\ tiempo\ que\ tarda\ en\ terminar\ la\ carrera\r\n\ \r\n\ @return\ double\ cr\ combustible\ restante\ del\ coche\r\n\ \r\n\ @throws\ IOException\r\n
+comment5.params=
+comment5.target=java.lang.String\ getTipo()
+comment5.text=\r\n\ Metodo\ que\ devuelve\ el\ tipo\ de\ coche\r\n
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment6.text=\r\n\ Metodo\ que\ imprime\ las\ caracteristicas\ del\ coche\r\n
+numComments=7

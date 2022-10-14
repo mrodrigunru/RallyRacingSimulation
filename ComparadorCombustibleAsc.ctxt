@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ComparadorCombustibleAsc
+comment0.text=\r\n\ Clase\ comparadora\ de\ ccombustible\ y\ nombre\ de\ los\ pilotos\ \r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=c1\ c2
+comment1.target=int\ compare(Coche,\ Coche)
+comment1.text=\r\n\ Comparador\ de\ pilotos\ que\ compara\ por\ combustible\ y\ en\ caso\ de\ igualdad\ por\ el\ nombre\ \r\n\ \r\n\ @param\ \ c1\ \ \ primer\ coche\ a\ comparar\r\n\ @param\ c2\ segundo\ coche\ a\ comparar\r\n
+numComments=2

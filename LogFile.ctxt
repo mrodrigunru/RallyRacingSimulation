@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=LogFile
+comment0.text=\r\n\ The\ writer\ of\ the\ file\ output.log\r\n\ \ @author\ Manuel\ Rodriguez\ Rodriguez\r\n\ \r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=LogFile()
+comment1.text=\r\n\ It\ initialise\ the\ file\ to\ write\ on\r\n\ \r\n\ @throws\ FileNotFoundException\ if\ the\ file\ if\ the\ file\ is\ not\ created\r\n\ \r\n\ @throws\ IOException\ if\ there\ is\ an\ error\ in\ Input/Output\ operations\r\n\ \r\n
+comment2.params=
+comment2.target=LogFile\ getInstance()
+comment2.text=\r\n\ Initialise\ the\ instance\ of\ LogFile\r\n\ \r\n\ @return\ The\ instance\ of\ LogFile\r\n
+comment3.params=chain
+comment3.target=void\ write(java.lang.String)
+comment3.text=\r\n\ Writes\ on\ the\ file\ \r\n\ \r\n\ @throws\ IOException\ if\ there\ is\ an\ error\ in\ Input/Output\ operations\r\n
+comment4.params=
+comment4.target=void\ close()
+comment4.text=\r\n\ Closes\ the\ file\r\n\ \r\n\ @throws\ IOExcpetion\ if\ there\ is\ an\ error\ in\ Input/Output\ operations\r\n
+numComments=5

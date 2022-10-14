@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=PilotoEstrella
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ PilotoEstrella\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=nombre\ concentracion
+comment1.target=PilotoEstrella(java.lang.String,\ Concentracion)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ PilotoEstrella\r\n
+comment2.params=
+comment2.target=double\ calcularDestreza()
+comment3.params=
+comment3.target=java.lang.String\ getTipoPiloto()
+comment3.text=\r\n\ Metodo\ que\ devuelve\ las\ caracterisitcas\ del\ piloto\r\n
+numComments=4

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Velocidad
+comment0.text=\r\n\ Enumeration\ class\ Velocidad\ -\ mide\ la\ velocidad\ de\ un\ coche\r\n\ \r\n\ @author\ Manuel\ Rodriguez\ &&\ Marcos\ Santos\r\n\ @version\ 1.0\r\n
+comment1.params=nombre\ value
+comment1.target=Velocidad(java.lang.String,\ double)
+comment1.text=\r\n\ Constructor\ de\ la\ clase\ Enum\ velocidad\r\n\ \r\n\ @param\ String\ nombre\ \:\ etiqueta\ del\ enumerado\r\n\ @param\ double\ value\ \:\ valor\ del\ enumerado\r\n\ \r\n\ @return\ (none)\r\n
+comment2.params=
+comment2.target=java.lang.String\ getNombre()
+comment2.text=\r\n\ Metodo\ getter\ de\ la\ etiqueta\ del\ enumerado\r\n\ @param\ (none)\r\n\ \r\n\ @return\ String\ nombre\ \:\ el\ nombre\ del\ enumerado\r\n
+comment3.params=
+comment3.target=double\ getValor()
+comment3.text=\r\n\ Metodo\ getter\ del\ valor\ del\ enumerado\r\n\ \r\n\ @param\ (none)\r\n\ \r\n\ @return\ double\ value\ \:\ el\ valor\ del\ enumerado\r\n
+numComments=4

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=DatosCampeonatoCompleto
+comment0.text=\r\n\ Clase\ para\ inciar\ los\ datos\ de\ la\ simulacion\ del\ campeonato\ completo\r\n\ \r\n\ @author\ Manuel\ Rodriguez\ Rodriguez\r\n\ @version\ 20/21\r\n
+comment1.params=
+comment1.target=DatosCampeonatoCompleto()
+comment2.params=
+comment2.target=void\ initData()
+comment2.text=\r\n\ Metodo\ que\ inicializa\ las\ variables\ de\ la\ Organizacion\r\n\ \r\n\ @param\ (no\ params\ needed)\r\n\ @return\ (nothing)\r\n
+numComments=3

@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Resultados
+comment0.text=\r\n\ Clase\ que\ recoge\ los\ resultados\ de\ un\ piloto\ en\ un\ circuito\r\n
+comment1.params=
+comment1.target=double\ getTiempo()
+comment1.text=\r\n\ Metodo\ que\ devuelve\ el\ tiempo\ en\ un\ circuito\r\n
+comment2.params=
+comment2.target=double\ getPuntos()
+comment2.text=\r\n\ Metodo\ que\ devuelve\ los\ puntos\ en\ un\ circuito\r\n
+comment3.params=tiempo
+comment3.target=void\ setTiempo(double)
+comment3.text=\r\n\ Metodo\ que\ asigna\ el\ tiempo\ en\ un\ circuito\r\n
+comment4.params=puntos
+comment4.target=void\ setPuntos(double)
+comment4.text=\r\n\ Metodo\ que\ asigna\ los\ puntos\ en\ un\ circuito\r\n
+numComments=5

@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ComparadorPuntosCarrerasAsc
+comment0.text=\r\n\ Clase\ comparadora\ de\ puntos\ totales\ de\ pilotos\r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=p1\ p2
+comment1.target=int\ compare(Piloto,\ Piloto)
+comment1.text=\r\n\ Comparador\ de\ pilotos\ que\ compara\ por\ total\ de\ puntos\ obtenidos\ de\ forma\ ascente\ y\ en\ caso\ de\ igualdad\ por\ el\ numero\ de\ carreras\ terminadas\r\n\ \r\n\ \ @param\ \ p1\ \ \ primer\ piloto\r\n\ @param\ \ p2\ \ \ segundo\ piloto\r\n
+numComments=2

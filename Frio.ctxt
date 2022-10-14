@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Frio
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Frio\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=nombre\ comp\ dis\ circuito
+comment1.target=Frio(java.lang.String,\ Complejidad,\ Distancia,\ Circuito)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Nocturno\r\n
+numComments=2

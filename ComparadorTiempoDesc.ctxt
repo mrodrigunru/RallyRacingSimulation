@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ComparadorTiempoDesc
+comment0.text=\r\n\ Clase\ comparadora\ de\ tiempo\ en\ carreras\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=circ
+comment1.target=ComparadorTiempoDesc(Circuito)
+comment2.params=p1\ p2
+comment2.target=int\ compare(Piloto,\ Piloto)
+comment2.text=\r\n\ Comparador\ de\ pilotos\ que\ compara\ por\ total\ de\ carreras\ terminadas\ y\ en\ caso\ de\ igualdad\ por\ el\ nombre\ \r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
+numComments=3
